@@ -414,3 +414,45 @@
         }
     }
 }
+
+.home-container .blog-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+
+    .container-blog-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        padding: 100px 0;
+        gap: 24px;
+
+        .title-blog {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            
+            h2 {
+                font-size: 40px;
+                font-weight: bold;
+                color: var(--color-text);
+            }
+    
+            .view-all {
+                color: var(--color-text);
+                margin-left: auto;
+                cursor: pointer;
+            }
+        }
+
+        .list-blog {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+    }
+}

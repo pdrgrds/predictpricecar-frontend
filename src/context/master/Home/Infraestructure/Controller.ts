@@ -4,7 +4,7 @@ import { ConfigData } from "../Domain/Utils";
 import { useNavigate } from "react-router-dom";
 
 export const Controller = (): IPropsScreen => {
-    const [data, setData] = useState<ConfigData>({ listEvaluation: [], listBrandPremiun: [] });
+    const [data, setData] = useState<ConfigData>({ listEvaluation: [], listBrandPremiun: [], lisToptBlog: [] });
     const navigate = useNavigate();
 
     const init = () => {
@@ -98,6 +98,11 @@ export const Controller = (): IPropsScreen => {
                 { link: '', titulo: 'Mercedez Benz', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZCObLoRdbh0du795cmF1f8LXU2ud9HRgOA&s' },
                 { link: '', titulo: 'Peugeot', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmCyxUdIFF2ru_VI9PKeTSgfZj5mAW4bmGJg&s' },
                 { link: '', titulo: 'Volkswagen', uri: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2019/04/logotipo-volkswagen-historia_21.jpg?tf=3840x' },
+            ],
+            lisToptBlog: [
+                { categoria: 'Accesorio', descripcion: '2024 BWM ALPINA XB7 con exclusivo detalles, extraordinario.', fecha: 'Octubre 22, 2024', uri: 'https://www.topgear.com/sites/default/files/images/cars-road-test/carousel/2021/03/9d0d163aa51ed59f0a737376c8f1ce68/alpinaxb7-13.jpg', user: 'Admin' },
+                { categoria: 'Nuevo', descripcion: '2024 BWM ALPINA XB6 con exclusivo detalles, extraordinario.', fecha: 'Octubre 14, 2024', uri: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/04/bmw-alpina-xb7-2675827.jpg?tf=1200x675', user: 'Admin' },
+                { categoria: 'Piezas', descripcion: '2024 BWM ALPINA XB5 con exclusivo detalles, extraordinario.', fecha: 'Octubre 10, 2024', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6geY2op9taMcmUb4ObPEiNWuGEvQ7sIBuQ&s', user: 'Admin' }
             ]
         }))
     }

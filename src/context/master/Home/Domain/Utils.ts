@@ -13,5 +13,12 @@ export interface ConfigData {
         uri: string;
         titulo: string;
         link: string;
+    }[];
+    lisToptBlog: {
+        uri: string;
+        categoria: string;
+        user: string;
+        fecha: string;
+        descripcion: string;
     }[]
 }

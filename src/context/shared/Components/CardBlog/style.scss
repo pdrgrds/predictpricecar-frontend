@@ -1,0 +1,42 @@
+.CardBlogComponents {
+    width: 390px;
+
+    .background-card {
+        width: 100%;
+        display: flex;
+        position: relative;
+        
+        img {
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .categoria-blog {
+            color: var(--color-text);
+            position: absolute;
+            padding: 6px 10px;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            border-radius: 12px;
+            font-size: 12px;
+            min-width: 60px;
+            text-align: center;
+        }
+    }
+
+    .date-blog {
+        color: var(--color-text);
+        font-size: 15px;
+        font-weight: 100;
+        width: 100%;
+    }
+
+    .description-blog {
+        color: var(--color-text);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: normal;
+        width: 100%;
+    }
+}

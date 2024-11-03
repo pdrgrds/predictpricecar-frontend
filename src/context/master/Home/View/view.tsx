@@ -18,6 +18,7 @@ import IconDescriptionF3 from './../../../../assets/icons/f3-description.svg'
 import IconDescriptionF4 from './../../../../assets/icons/f4-description.svg'
 
 import './style.scss';
+import { CardBlogComponents } from '../../../shared/Components/CardBlog';
 
 export const View = (props: IPropsScreen) => {
     return (
@@ -178,6 +179,25 @@ export const View = (props: IPropsScreen) => {
                         <p>Estamos liderando en el sector de venta de vehículos usados por +4 años juntos a nuestros colabodadores y poder ofreceles un servicio de calidad</p>
                         <button>Ver más <i className='fa-solid fa-up-right-from-square' /></button>
                     </div>
+                </div>
+            </section>
+
+            {/* 7 SECTION */}
+            <section className='blog-section'>
+                <div className='container-blog-section'>
+                    <div className='title-blog'>
+                        <h2>Explora nuestro blog</h2>
+                        <span className='view-all'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
+                    </div>
+
+                    <div className='list-blog'>
+                        {
+                            props.data.lisToptBlog.map(row =>
+                                <CardBlogComponents {...row} />
+                            )
+                        }
+                    </div>
+
                 </div>
             </section>
         </div>
