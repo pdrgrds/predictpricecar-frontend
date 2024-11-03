@@ -4,7 +4,7 @@ import { ConfigData } from "../Domain/Utils";
 import { useNavigate } from "react-router-dom";
 
 export const Controller = (): IPropsScreen => {
-    const [data, setData] = useState<ConfigData>({ listEvaluation: [] });
+    const [data, setData] = useState<ConfigData>({ listEvaluation: [], listBrandPremiun: [] });
     const navigate = useNavigate();
 
     const init = () => {
@@ -90,6 +90,14 @@ export const Controller = (): IPropsScreen => {
                   titulo: "Toyota RAV4 Hybrid",
                   uri: "https://grupopanaseminuevos.com.pe/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-09-at-9.25.16-AM-7.jpeg"
                 }
+            ],
+            listBrandPremiun: [
+                { link: '', titulo: 'Audi', uri: 'https://1000marcas.net/wp-content/uploads/2019/12/Audi-logo-600x338.png' },
+                { link: '', titulo: 'BMW', uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/1015px-BMW.svg.png' },
+                { link: '', titulo: 'Ford', uri: 'https://1000marcas.net/wp-content/uploads/2020/01/Ford-Logo-2003.png' },
+                { link: '', titulo: 'Mercedez Benz', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZCObLoRdbh0du795cmF1f8LXU2ud9HRgOA&s' },
+                { link: '', titulo: 'Peugeot', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmCyxUdIFF2ru_VI9PKeTSgfZj5mAW4bmGJg&s' },
+                { link: '', titulo: 'Volkswagen', uri: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2019/04/logotipo-volkswagen-historia_21.jpg?tf=3840x' },
             ]
         }))
     }

@@ -161,8 +161,9 @@
         width: 100%;
         flex-direction: column;
         display: flex;
-        padding: 40px 0;
+        padding: 70px 0 40px;
         gap: 40px;
+        flex-wrap: wrap;
 
         .container-title-evaluations {
             display: flex;
@@ -188,6 +189,174 @@
             flex-direction: row;
             flex-wrap: wrap;
             gap: 24px;
+        }
+    }
+}
+
+.home-container .helped-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+
+    .container-helped-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        padding: 100px 0 40px;
+        gap: 24px;
+
+        .group-info-helped {
+            width: calc(50% - 24px);
+            color: var(--color-text);
+            background-color: #E9F2FF;
+            padding: 80px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+
+            h3 {
+                font-weight: bold;
+                font-size: 30px;
+                line-height: normal;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                width: 75%;
+            }
+
+            button {
+                width: 160px;
+                background-color: #405FF2;
+                height: 60px;
+
+                i { margin-left: 10px; }
+            }
+
+            img {
+                position: absolute;
+                bottom: 40px;
+                right: 40px;
+            }
+        }
+
+        .group-info-helped-2 {
+            background-color: #FFE9F3;
+
+            button {
+                background-color: var(--color-text);
+            }
+        }
+    }
+}
+
+.home-container .description-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+
+    .container-description-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        padding: 100px 0 40px;
+        gap: 24px;
+
+        .group-description {
+            width: calc(50% - 12px);
+            color: var(--color-text);
+
+            h3 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+
+        .list-description {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            .item-description {
+                width: calc(50% - 10px);
+                display: flex;
+                flex-direction: column;
+                gap: 17px;
+                margin-bottom: 30px;
+
+                p {
+                    font-weight: 700;
+                    font-size: 18px;
+                }
+
+                span {
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.home-container .products-premiun-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+
+    .container-products-premiun-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        padding: 100px 0;
+        gap: 24px;
+
+        .title-products-premiun {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            
+            h2 {
+                font-size: 40px;
+                font-weight: bold;
+                color: var(--color-text);
+            }
+    
+            .view-all-evaluations {
+                color: var(--color-text);
+                margin-left: auto;
+                cursor: pointer;
+            }
+        }
+
+        .list-products-premiun {
+            width: 100%;
+            display: flex;
+            gap: 14px;
+
+            .item-product-premiun {
+                width: 200px;
+                height: 180px;
+                display: flex;
+                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                p { color: var(--color-text); }
+                border: 1px solid #E9E9E9;
+                border-radius: 16px;
+
+                img { object-fit: contain; }
+            }
         }
     }
 }

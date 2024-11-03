@@ -9,4 +9,9 @@ export interface ConfigData {
         titulo: string;
         uri: string;
     }[];
+    listBrandPremiun: {
+        uri: string;
+        titulo: string;
+        link: string;
+    }[]
 }
