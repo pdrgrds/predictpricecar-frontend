@@ -1,6 +1,12 @@
 import { CardCarComponent } from '../../../shared/Components/CardCar';
 import { SelectComponent } from '../../../shared/Components/select';
 import { IPropsScreen } from '../Domain/IPropsScreen';
+import IconSedan from './../../../../assets/icons/car-type/sedan.svg'
+import IconSuv from './../../../../assets/icons/car-type/suv.svg'
+import IconCoupe from './../../../../assets/icons/car-type/coupe.svg'
+import IconConvertible from './../../../../assets/icons/car-type/convertible.svg'
+import IconHatchback from './../../../../assets/icons/car-type/hatchback.svg'
+import IconHybrid from './../../../../assets/icons/car-type/hybrid.svg'
 import './style.scss';
 
 export const View = (props: IPropsScreen) => {
@@ -20,7 +26,7 @@ export const View = (props: IPropsScreen) => {
                             <span>Blog</span>
                             <span>Página</span>
                             <span>Contáctenos</span>
-                            <span className='button-login-home'><i className='fa-regular fa-user' /> Iniciar sesión</span>
+                            <span className='button-login-home' onClick={() => props.redirectPage('login')}><i className='fa-regular fa-user' /> Iniciar sesión</span>
                         </div>
                     </div>
 
@@ -44,12 +50,12 @@ export const View = (props: IPropsScreen) => {
                     </div>
 
                     <div className='filter-cars-home'>
-                        <span> <i className='fa-solid fa-car' /> SUV </span>
-                        <span> <i className='fa-solid fa-car' /> Sedan </span>
-                        <span> <i className='fa-solid fa-car' /> Hatchback </span>
-                        <span> <i className='fa-solid fa-car' /> Coupe </span>
-                        <span> <i className='fa-solid fa-car' /> Hybrid </span>
-                        <span> <i className='fa-solid fa-car' /> Convertible </span>
+                        <div> <img src={IconSuv} height={30} width={30} /> <span>SUV</span> </div>
+                        <div> <img src={IconSedan} height={30} width={30} /> <span>Sedan</span> </div>
+                        <div> <img src={IconHatchback} height={30} width={30} /> <span>Hatchback</span> </div>
+                        <div> <img src={IconCoupe} height={30} width={30} /> <span>Coupe</span> </div>
+                        <div> <img src={IconHybrid} height={30} width={30} /> <span>Hybrid</span> </div>
+                        <div> <img src={IconConvertible} height={30} width={30} /> <span>Convertible</span> </div>
                     </div>
                 </div>
             </section>

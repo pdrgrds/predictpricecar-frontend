@@ -133,8 +133,12 @@
             gap: 60px;
             padding: 20px 0;
 
-            span {
+            div {
+                display: flex;
+                align-items: center;
+                gap: 10px;
                 cursor: pointer;
+                align-items: center;
             }
 
             i {

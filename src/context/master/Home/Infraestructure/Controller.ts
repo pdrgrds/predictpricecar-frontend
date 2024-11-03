@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { IPropsScreen } from "../Domain/IPropsScreen";
 import { ConfigData } from "../Domain/Utils";
+import { useNavigate } from "react-router-dom";
 
 export const Controller = (): IPropsScreen => {
     const [data, setData] = useState<ConfigData>({ listEvaluation: [] });
+    const navigate = useNavigate();
 
     const init = () => {
         setData(() => ({
@@ -92,8 +94,13 @@ export const Controller = (): IPropsScreen => {
         }))
     }
 
+    const redirectPage = (url: string) => {
+        navigate(url)
+    }
+
     return ({
         init,
-        data
+        data,
+        redirectPage
     })
 }

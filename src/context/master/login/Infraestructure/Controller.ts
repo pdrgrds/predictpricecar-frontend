@@ -22,6 +22,7 @@ export const Controller = (): IPropsScreen => {
         // const user = await authService.login(values.username, values.password);
         // console.log('Usuario autenticado:', user);
         // Aquí podrías redirigir al usuario o guardar el token
+        navigate('/')
       } catch (error) {
         alert('Error de autenticación');
       }
