@@ -19,6 +19,8 @@ import IconDescriptionF4 from './../../../../assets/icons/f4-description.svg'
 
 import './style.scss';
 import { CardBlogComponents } from '../../../shared/Components/CardBlog';
+import { FooterComponent } from '../../../shared/Components/Footer';
+import { HeaderComponent } from '../../../shared/Components/Header';
 
 export const View = (props: IPropsScreen) => {
     return (
@@ -27,21 +29,7 @@ export const View = (props: IPropsScreen) => {
             { /* 1 SECTION */ }
             <section className='main-section'>
                 <div className='container-main-section'>
-                    <div className='nav-bar-home'>
-                        <div className='menu-home'>
-                            <i className="fa-solid fa-bars" />
-                            <span>Menú</span>
-                        </div>
-                        <h3>CARS PREDICT ML</h3>
-                        <div className='options-home'>
-                            <span>Inicio</span>
-                            <span>Lista</span>
-                            <span>Blog</span>
-                            <span>Página</span>
-                            <span>Contáctenos</span>
-                            <span className='button-login-home' onClick={() => props.redirectPage('login')}><i className='fa-regular fa-user' /> Iniciar sesión</span>
-                        </div>
-                    </div>
+                    <HeaderComponent redirectPage={props.redirectPage} />
 
                     <div className='filter-home'>
                         <div>
@@ -200,6 +188,9 @@ export const View = (props: IPropsScreen) => {
 
                 </div>
             </section>
+
+            {/* FOOTER */}
+            <FooterComponent />
         </div>
     )
 }

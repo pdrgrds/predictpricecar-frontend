@@ -73,7 +73,7 @@ export const Controller = (): IPropsScreen => {
                 {
                   combustible: "Gasolina",
                   descripcion: "5.0 V8 GT Fastback",
-                  kilometro: 15000,
+                  kilometro: 15,
                   link: "8",
                   precio: 55000,
                   tipo: "Manual",
@@ -83,7 +83,7 @@ export const Controller = (): IPropsScreen => {
                 {
                   combustible: "Híbrido",
                   descripcion: "2.5 AWD Limited",
-                  kilometro: 20000,
+                  kilometro: 20,
                   link: "9",
                   precio: 42000,
                   tipo: "Automático",

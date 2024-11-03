@@ -1,0 +1,60 @@
+.HeaderComponent {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .menu-home {
+        color: white;
+        font-size: 20px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        * {
+            cursor: pointer;
+        }
+    }
+
+    h3 {
+        color: white;
+        margin: 0 0 0 40px;
+    }
+
+    .options-home {
+        display: flex;
+        gap: 30px;
+        color: white;
+        margin-left: auto;
+        align-items: center;
+
+        span {
+            cursor: pointer;
+        }
+
+        span:hover {
+            border-bottom: 2px solid white;
+            transition: ease-in-out 0.5s;
+        }
+
+        .button-login-home {
+            display: flex;
+            gap: 10px;
+            border: 1px solid white;
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+
+            i {
+                font-size: 20px
+            }
+        }
+
+        .button-login-home:hover {
+            background-color: white;
+            color: #405FF2;
+        }
+    }
+}

@@ -1,5 +1,8 @@
 .CardBlogComponents {
     width: 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
     .background-card {
         width: 100%;
