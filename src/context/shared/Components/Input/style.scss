@@ -3,11 +3,24 @@
     width: 100%;
 }
 
+.group-icon-input {
+    display: flex;
+    background-color: #DEE4FF;
+    align-items: center;
+
+    i {
+        font-size: 20px;
+        margin-left: 12px;
+        color: #405FF2;
+    }
+}
+
 .form-group input {
     background-color: #DEE4FF;
     border: none;
     width: calc(100% - 20px);
     color: #405FF2;
+    outline: none;
 }
 
 .form-control {

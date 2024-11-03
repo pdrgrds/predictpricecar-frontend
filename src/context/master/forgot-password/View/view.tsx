@@ -12,6 +12,7 @@ export const View = (props: IPropsScreen) => {
                         form={props.formForgotPassword}
                         label='Correo electrónico'
                         name='correo'
+                        icon='fa-solid fa-envelope'
                     />
 
                     <button type="submit" disabled={props.formForgotPassword.isSubmitting} className="login-button">

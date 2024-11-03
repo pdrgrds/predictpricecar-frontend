@@ -12,6 +12,7 @@ export const View = (props: IPropsScreen) => {
                         form={props.formLogin}
                         label='Usuario'
                         name='username'
+                        icon='fa-solid fa-user'
                     />
 
                     <InputComponent
@@ -19,6 +20,7 @@ export const View = (props: IPropsScreen) => {
                         label='Contraseña'
                         name='password'
                         type='password'
+                        icon='fa-solid fa-key'
                     />
 
                     <button type="submit" disabled={props.formLogin.isSubmitting} className="login-button">
