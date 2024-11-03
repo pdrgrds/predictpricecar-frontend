@@ -167,6 +167,19 @@ export const View = (props: IPropsScreen) => {
 
                 </div>
             </section>
+
+            {/* 6 SECTION */}
+            <section className='aboutus-section'>
+                <div className='container-aboutus-section'>
+                    <div className='group-aboutus image-aboutus'/>
+
+                    <div className='group-aboutus description-aboutus'>
+                        <h3>Sobre nosotros</h3>
+                        <p>Estamos liderando en el sector de venta de vehículos usados por +4 años juntos a nuestros colabodadores y poder ofreceles un servicio de calidad</p>
+                        <button>Ver más <i className='fa-solid fa-up-right-from-square' /></button>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

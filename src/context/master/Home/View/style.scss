@@ -360,3 +360,57 @@
         }
     }
 }
+
+.home-container .aboutus-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #F9FBFC;
+
+    .container-aboutus-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        padding: 100px 0;
+        gap: 24px;
+        height: 500px;
+
+        .group-aboutus {
+            width: calc(50% - 12px);
+        }
+
+        .image-aboutus {
+            background-image: url('./../../../../assets//image/background-aboutus.png');
+            background-size: cover;
+            height: 500px;
+            border-radius: 16px;
+        }
+
+        .description-aboutus {
+            color: var(--color-text);
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+
+            h3 {
+                font-size: 40px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 300;
+            }
+
+            button {
+                width: 160px;
+                background-color: #405FF2;
+                color: white;
+                i { font-size: 12px; margin-left: 12px; }
+            }
+        }
+    }
+}
