@@ -1,0 +1,74 @@
+.custom-select-container {
+    position: relative;
+    width: 200px;
+  }
+  
+  .custom-select-button {
+    width: 100%;
+    background-color: transparent;
+    // border: 1px solid #405FF2;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s;
+    outline: none !important;
+  
+    &:hover {
+      border-color: white;
+    }
+  
+    .placeholder {
+      color: rgba(0, 68, 123, 0.6);
+    }
+  
+    .arrow {
+      font-size: 10px;
+    }
+  }
+  
+  .custom-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    margin-top: 5px;
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+  
+    .custom-select-option {
+      padding: 10px;
+      color: #405FF2;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #e0f7ff;
+      }
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

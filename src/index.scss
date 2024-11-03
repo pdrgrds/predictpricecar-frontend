@@ -11,6 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  * {
+    font-family: "DM Sans", sans-serif;
+    outline: none !important;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 { margin: 0; }
 }
 
 #root {
