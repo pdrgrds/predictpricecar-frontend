@@ -1,3 +1,4 @@
+import { CardCarComponent } from '../../../shared/Components/CardCar';
 import { SelectComponent } from '../../../shared/Components/select';
 import { IPropsScreen } from '../Domain/IPropsScreen';
 import './style.scss';
@@ -53,7 +54,22 @@ export const View = (props: IPropsScreen) => {
                 </div>
             </section>
 
+            <section className='evaluations-section'>
+                <div className='container-evaluations-section'>
+                    <div className='container-title-evaluations'>
+                        <h2>Evaluaciones recientes</h2>
+                        <span className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
+                    </div>
+                    <div className='list-evaluation'>
+                        {
+                            props.data.listEvaluation.map((row, index) =>
+                                <CardCarComponent {...row} key={index} />
+                            )
+                        }
+                    </div>
 
+                </div>
+            </section>
         </div>
     )
 }
