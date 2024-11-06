@@ -6,7 +6,7 @@
   .custom-select-button {
     width: 100%;
     background-color: transparent;
-    // border: 1px solid #405FF2;
+    // border: 1px solid var(--primary-color);
     color: black;
     padding: 10px;
     border-radius: 5px;
@@ -50,7 +50,7 @@
   
     .custom-select-option {
       padding: 10px;
-      color: #405FF2;
+      color: var(--primary-color);
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s;

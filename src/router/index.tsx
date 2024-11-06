@@ -4,6 +4,10 @@ import Register from './../context/master/register';
 import ForgotPassword from './../context/master/forgot-password';
 import Home from './../context/master/Home';
 
+import FormPrediction from './../context/prediction/form';
+import FormDetail from './../context/prediction/detail';
+import { LayoutBase } from './components/layoutbase';
+
 const AppRouter = () => {
     return (
         <Router>
@@ -11,6 +15,12 @@ const AppRouter = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
+
+                <Route element={<LayoutBase />}>
+                    <Route path="/form-prediction" element={<FormPrediction />} />
+                    <Route path="/form-detail/:id" element={<FormDetail />} />
+                </Route>
+
                 <Route path="/" element={<Home />} />
             </Routes>
         </Router>

@@ -33,7 +33,7 @@ export const View = (props: IPropsScreen) => {
 
                     <div className='filter-home'>
                         <div>
-                            <p>Predicción Online. Evalúa tu vehículo rápido. <span className='link-form'>Ver más</span></p>
+                            <p>Predicción Online. Evalúa tu vehículo rápido. <span onClick={() => props.redirectPage('form-prediction')} className='link-form'>Ver más</span></p>
                             <h1>Rápido, Simple y Fácil</h1>
                             <div className='filters-type-car'>
                                 <span className='item-selected '>Todos</span>
@@ -85,7 +85,7 @@ export const View = (props: IPropsScreen) => {
                     <div className='group-info-helped'>
                         <h3>¿Estas buscando <br/> un vehículo?</h3>
                         <p>Nos comprometemos a brindarles a nuestros clientes un servicio excepcional.</p>
-                        <button>Empezar <i className='fa-solid fa-up-right-from-square' /></button>
+                        <button onClick={() => props.redirectPage('form-prediction')}>Empezar <i className='fa-solid fa-up-right-from-square' /></button>
                         <img src={IconElectricCar}  height={110} width={110}/>
                     </div>
 
