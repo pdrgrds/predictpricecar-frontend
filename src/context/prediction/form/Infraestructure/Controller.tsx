@@ -1,5 +1,7 @@
+import { useFormik } from "formik";
 import { IPropsScreen } from "../Domain/IPropsScreen";
 import { useNavigate } from "react-router-dom";
+import * as Yup from 'yup';
 
 export const Controller = (): IPropsScreen => {
     const navigate = useNavigate();
@@ -7,11 +9,18 @@ export const Controller = (): IPropsScreen => {
     const init = () => {
     }
 
-    const redirectPage = (url: string) => {
-        navigate(url)
-    }
+    const formHistorial = useFormik<any>({
+        initialValues: {},
+        onSubmit: () => {},
+        validationSchema: Yup.object({
+
+        })
+    })
 
     return ({
-        init
+        init,
+        formHistorial,
+        formEstado: formHistorial,
+        formGeneral: formHistorial
     })
 }

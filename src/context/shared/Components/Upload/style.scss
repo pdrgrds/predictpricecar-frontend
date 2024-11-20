@@ -1,0 +1,42 @@
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    background-color: #DEE4FF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #d0d8ff;
+    }
+}
+
+.upload-label {
+    flex-grow: 1;
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+i {
+    font-size: 20px;
+    margin-left: 12px;
+    color: var(--primary-color);
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+}

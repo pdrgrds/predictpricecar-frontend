@@ -1,0 +1,37 @@
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.group-icon-input {
+    display: flex;
+    background-color: #DEE4FF;
+    align-items: center;
+
+    i {
+        font-size: 20px;
+        margin-left: 12px;
+        color: var(--primary-color);
+    }
+}
+
+.form-group input {
+    background-color: #DEE4FF;
+    border: none;
+    width: calc(100% - 20px);
+    color: var(--primary-color);
+    outline: none;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+}

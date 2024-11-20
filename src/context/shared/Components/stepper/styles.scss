@@ -1,0 +1,39 @@
+.Steppercomponent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .item-stepper {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        height: 40px;
+        gap: 30px;
+
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background-color: var(--primary-color);
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .item-text {
+            font-size: 16px;
+            font-weight: bold;
+            height: auto;
+            align-self: center;
+            color: var(--primary-color);
+            background-color: rgba(64, 95, 242, 0.2);
+            padding: 0 12px;
+            min-width: 70px;
+            text-align: start;
+        }
+    }
+}

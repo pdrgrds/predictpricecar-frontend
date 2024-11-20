@@ -1,3 +1,51 @@
 .FormPredictioncomponent {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .ContentStep {
+        width: 200px;
+    }
+
+    .ContentForm {
+        width: calc(100% - 200px);
+        min-height: calc(100vh - 406px);
+        border-radius: 20px;
+        border: 1px solid #D0D0D0;
+        background-color: white;
+        padding: 40px;
+
+        >div:nth-child(1) {
+            flex-direction: column;
+            height: 100%;
+            display: flex;
+            width: 100%;
+            align-items: center;
+        }
+    }
+
+    h2 { color: var(--primary-color); margin-bottom: 40px; }
+
+    .group-inputs-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2%;
+
+        >div {
+            width: 32%;
+            margin-bottom: 30px;
+        }
+    }
+
+    .group-input-form {
+        margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 9px;
+        border-radius: 20px;
+    }
 }
