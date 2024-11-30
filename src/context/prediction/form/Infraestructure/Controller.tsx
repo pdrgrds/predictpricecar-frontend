@@ -4,12 +4,30 @@ import * as Yup from 'yup';
 import { useState } from "react";
 import { IConfigForm, initIConfigForm } from "../Domain/IConfigForm";
 import { useNavigate } from "react-router-dom";
+import { UseCaseLoadData } from "../Application/UseCaseLoadData";
+import { RepositoryImpl } from "./RepositoryImpl";
+import { initIServicePredictionRequest, IServicePredictionRequest } from "../Domain/Service/IServicePrediction";
+import { UseCaseSavePrediction } from "../Application/UseCaseSavePrediction";
+import { useDispatch, useSelector } from "react-redux";
+import { addLoading, removeLoading } from "../../../shared/Infraestructure/SliceGeneric";
+import { toast } from "react-toastify";
+import { AdapterErrorMessage } from "../../../shared/Infraestructure/AdapterErrorMessage";
+import { RootState } from "../../../shared/Infraestructure/AdapterStore";
 
 export const Controller = (): IPropsScreen => {
-    const navigate = useNavigate();
     const [configForm, setConfigForm] = useState<IConfigForm>(initIConfigForm);
+    const { user } = useSelector((state: RootState) => state.generic.user);
 
-    const init = () => {
+    const _repository = new RepositoryImpl();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const init = async () => {
+        const result = await new UseCaseLoadData(_repository).exec();
+        setConfigForm((prev) => ({
+            ...prev,
+            optionsInformation: result
+        }))
     }
 
     const onChangeView = (key: IConfigForm['module']) => {
@@ -19,17 +37,39 @@ export const Controller = (): IPropsScreen => {
         }))
     }
 
-    const formHistorial = useFormik<any>({
-        initialValues: {},
+    const formHistorial = useFormik<IServicePredictionRequest>({
+        initialValues: initIServicePredictionRequest,
         onSubmit: () => {},
         validationSchema: Yup.object({
-
+            
         })
     })
 
     const onSubmit = async () => {
-        const uid = "23423do2-d2332d23-d2323432e-23d232324";
-        navigate(`/form-detail/${uid}`)
+        const data = new FormData();
+        Object.keys(formHistorial.values).forEach((key) => {
+            data.append(key, (formHistorial.values as any)[key]);
+        })
+
+        data.append("user", `${user.id}`)
+        data.append("mae", `0.92`)
+        data.append("rmse", `2.4232`)
+        data.append("squared", `4.2323`)
+        data.append("valued_amount", `200000`)
+
+        try {
+            dispatch(addLoading());
+            const result = await new UseCaseSavePrediction(_repository).exec(data);
+            navigate(`/form-detail/${result.id}`);
+        } catch(error) {
+            const message = AdapterErrorMessage.exec(error as any)
+            toast.error(message, {
+              position: "bottom-right",
+              autoClose: 5000
+            });
+        } finally {
+            dispatch(removeLoading());
+        }
     }
 
     return ({

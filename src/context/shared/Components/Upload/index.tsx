@@ -10,6 +10,7 @@ interface IProps {
 }
 
 export const UploadInternComponent = (props: IProps) => {
+
     return (
         <div className="form-group">
             <span className="label-form">
@@ -18,13 +19,14 @@ export const UploadInternComponent = (props: IProps) => {
             <div className="upload-container">
                 {props.icon && <i className={props.icon} />}
                 <label htmlFor={props.name} className="upload-label">
-                    Seleccionar archivo
+                    { props.form.values[props.name]?.name || "Seleccionar archivo" }
                 </label>
                 <input
                     type="file"
                     id={props.name}
                     name={props.name}
                     className="file-input"
+                    accept="image/*"
                     onChange={(event) => {
                         props.form.setFieldValue(props.name, event.currentTarget.files?.[0]);
                     }}

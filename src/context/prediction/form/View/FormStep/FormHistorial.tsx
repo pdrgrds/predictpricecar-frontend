@@ -15,54 +15,36 @@ export const FormHistorial = (props: IPropsScreen) => {
                 <InputInternComponent
                     form={props.formHistorial}
                     label="Kilometraje histórico"
-                    name=""
+                    name="mileage"
                     isRequired
                 />
 
                 <InputInternComponent
                     form={props.formHistorial}
-                    label="Frecuencia de cambios de aceite"
-                    name=""
+                    label="Frecuencia de cambios de aceite (meses)"
+                    name="oil_change_frequency"
                     isRequired
                 />
 
                 <InputInternComponent
                     form={props.formHistorial}
-                    label="Frecuencia de cambios de filtro"
-                    name=""
+                    label="Frecuencia de cambios de filtro (meses)"
+                    name="filter_change_frequency"
                     isRequired
                 />
 
-                <InputInternComponent
+                <CheckboxComponent
                     form={props.formHistorial}
-                    label="Historial de reparaciones del motor"
-                    name=""
+                    label="Modificaciones del motor"
+                    name="engine_modifications"
                     isRequired
                 />
 
-                <InputInternComponent
+                <CheckboxComponent
                     form={props.formHistorial}
-                    label="Historial de reemplazos de componentes críticos"
-                    name=""
+                    label="Reemplazos de componentes críticos"
+                    name="critical_replacements"
                     isRequired
-                />
-
-                <InputInternComponent
-                    form={props.formHistorial}
-                    label="Pruebas de compresión"
-                    name=""
-                />
-
-                <InputInternComponent
-                    form={props.formHistorial}
-                    label="Informe de emisiones"
-                    name=""
-                />
-
-                <InputInternComponent
-                    form={props.formHistorial}
-                    label="Revisiones realizadas según fabricante"
-                    name=""
                 />
 
                 <span className="sub-category">2.2) Documentación:</span>
@@ -70,19 +52,19 @@ export const FormHistorial = (props: IPropsScreen) => {
                 <CheckboxComponent
                     form={props.formHistorial}
                     label="Documentos en regla (Tarjeta de propiedad, SOAT)"
-                    name=""
+                    name="documentation_in_order"
                 />
 
                 <CheckboxComponent
                     form={props.formHistorial}
                     label="Impuestos al día"
-                    name=""
+                    name="taxes_in_order"
                 />
 
                 <CheckboxComponent
                     form={props.formHistorial}
                     label="Revisión técnica vigente"
-                    name=""
+                    name="technical_review_valid"
                 />
             </div>
 

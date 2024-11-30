@@ -12,36 +12,36 @@ export const FormEstado = (props: IPropsScreen) => {
             <div className="group-inputs-form">
                 <span className="sub-category">3.1) Condición Física:</span>
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("body_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado de la carrocería"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("chassis_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado del chasis"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("brakes_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado de los frenos"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("suspension_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado de la suspensión"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("exhaust_system_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado del Sistema de Escape"
                     isRequired
                 />
@@ -49,15 +49,15 @@ export const FormEstado = (props: IPropsScreen) => {
                 <span className="sub-category">3.2) Interior:</span>
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("air_conditioning_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado del sistema de aire acondicionado"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("electrical_system_condition", value) }}
+                    options={props.configForm.optionsInformation.vehicleconditions}
                     label="Estado de los sistemas eléctricos"
                     isRequired
                 />
@@ -67,7 +67,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Frontal"
-                    name="frontal"
+                    name="front_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -75,7 +75,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Lateral Izquierdo"
-                    name="lateralIzquierdo"
+                    name="left_side_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -83,7 +83,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Lateral Derecho"
-                    name="lateralDerecho"
+                    name="right_side_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -91,7 +91,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Trasera"
-                    name="trasera"
+                    name="rear_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -99,7 +99,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Motor (Comportamiento)"
-                    name="motor"
+                    name="engine_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -107,7 +107,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Interior"
-                    name="interio"
+                    name="interior_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -115,7 +115,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Asientos"
-                    name="asientos"
+                    name="seats_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />
@@ -123,7 +123,7 @@ export const FormEstado = (props: IPropsScreen) => {
                 <UploadInternComponent
                     form={props.formEstado}
                     label="Tablero"
-                    name="tablero"
+                    name="dashboard_image"
                     isRequired
                     icon="fa-solid fa-upload"
                 />

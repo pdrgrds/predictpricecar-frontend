@@ -14,13 +14,13 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Año de fabricación"
-                    name=""
+                    name="year_of_manufacture"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("brand", value) }}
+                    options={props.configForm.optionsInformation.vehicleBrands}
                     label="Marca"
                     isRequired
                 />
@@ -28,20 +28,20 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Modelo"
-                    name=""
+                    name="model"
                     isRequired
                 />
 
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Versión"
-                    name=""
+                    name="version"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("fuel_type", value) }}
+                    options={props.configForm.optionsInformation.fuelTypes}
                     label="Tipo de Combustible"
                     isRequired
                 />
@@ -49,13 +49,13 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Color"
-                    name=""
+                    name="color"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("transmission_type", value) }}
+                    options={props.configForm.optionsInformation.transmissionTypes}
                     label="Tipo de transmisión"
                     isRequired
                 />
@@ -63,20 +63,20 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Número de puertas"
-                    name=""
+                    name="number_of_doors"
                     isRequired
                 />
 
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Potencia del motor (Cilindrica)"
-                    name=""
+                    name="engine_power"
                     isRequired
                 />
 
                 <SelectInternComponent
-                    onChange={() => {}}
-                    options={[]}
+                    onChange={(value) => { props.formGeneral.setFieldValue("traction_type", value) }}
+                    options={props.configForm.optionsInformation.tractionTypes}
                     label="Tipo de tracción"
                     isRequired
                 />
