@@ -42,7 +42,7 @@ export const FormHistorial = (props: IPropsScreen) => {
 
                 <CheckboxComponent
                     form={props.formHistorial}
-                    label="Reemplazos de componentes críticos"
+                    label="Reemplazo de componentes críticos"
                     name="critical_replacements"
                     isRequired
                 />

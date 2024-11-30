@@ -55,7 +55,7 @@ export const Controller = (): IPropsScreen => {
         data.append("mae", `0.92`)
         data.append("rmse", `2.4232`)
         data.append("squared", `4.2323`)
-        data.append("valued_amount", `200000`)
+        data.append("valued_amount", `120000`)
 
         try {
             dispatch(addLoading());

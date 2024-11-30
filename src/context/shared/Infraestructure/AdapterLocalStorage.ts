@@ -14,4 +14,8 @@ export class AdapterLocalStorage {
     public static set(key: string, value: string) {
         localStorage.setItem(key, value);
     }
+
+    public static delete(key: string) {
+        localStorage.removeItem(key);
+    }
 }
