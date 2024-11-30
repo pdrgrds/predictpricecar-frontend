@@ -11,6 +11,13 @@ export const View = (props: IPropsScreen) => {
 
                     <InputComponent
                         form={props.formRegister}
+                        label='Usuario'
+                        name='usuario'
+                        icon='fa-solid fa-user'
+                    />
+
+                    <InputComponent
+                        form={props.formRegister}
                         label='Correo electrónico'
                         name='correo'
                         type='email'
@@ -42,6 +49,7 @@ export const View = (props: IPropsScreen) => {
                         form={props.formRegister}
                         label='Contraseña'
                         name='password'
+                        type='password'
                         icon='fa-solid fa-key'
                     />
 
@@ -49,6 +57,7 @@ export const View = (props: IPropsScreen) => {
                         form={props.formRegister}
                         label='Confirmar contraseña'
                         name='confirmPassword'
+                        type='password'
                         icon='fa-solid fa-key'
                     />
 

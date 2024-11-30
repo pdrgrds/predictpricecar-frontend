@@ -40,11 +40,11 @@
         margin-left: auto;
         align-items: center;
 
-        span {
+        span, a {
             cursor: pointer;
         }
 
-        span:hover {
+        span:hover, a:hover {
             border-bottom: 2px solid white;
             transition: ease-in-out 0.5s;
         }

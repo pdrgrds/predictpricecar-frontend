@@ -7,8 +7,16 @@ import Home from './../context/master/Home';
 import FormPrediction from './../context/prediction/form';
 import FormDetail from './../context/prediction/detail';
 import { LayoutBase } from './components/layoutbase';
+import { useEffect } from 'react';
+import { Controller } from './Infraestructure/Controller';
 
 const AppRouter = () => {
+    const controller = Controller();
+
+    useEffect(() => {
+        controller.initLoad();
+    }, [])
+
     return (
         <Router>
             <Routes>

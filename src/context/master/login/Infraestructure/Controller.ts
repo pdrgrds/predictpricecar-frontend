@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { AdapterLocalStorage } from '../../../shared/Infraestructure/AdapterLocalStorage';
 import { KEYS_APP } from '../../../shared/keys';
 import { useDispatch } from 'react-redux';
-import { addLoading, removeLoading } from '../../../shared/Infraestructure/SliceGeneric';
+import { addLoading, changeUser, removeLoading } from '../../../shared/Infraestructure/SliceGeneric';
 
 export const Controller = (): IPropsScreen => {
   const navigate = useNavigate()
@@ -35,6 +35,7 @@ export const Controller = (): IPropsScreen => {
           username: values.username
         });
         AdapterLocalStorage.set(KEYS_APP.user, JSON.stringify(user));
+        dispatch(changeUser(user));
         navigate('/')
 
       } catch (error) {

@@ -1,4 +1,5 @@
 export interface EntityFormRegister {
+    usuario: string;
     correo: string;
     nombres: string;
     apellidos: string;

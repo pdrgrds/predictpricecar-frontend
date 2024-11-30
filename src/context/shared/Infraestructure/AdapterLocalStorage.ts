@@ -7,6 +7,8 @@ export class AdapterLocalStorage {
             const result = localStorage.getItem(row);
             listResukt.push(result);
         }
+
+        return listResukt;
     }
 
     public static set(key: string, value: string) {
