@@ -9,7 +9,7 @@ interface IProps {
     isRequired?: boolean;
 }
 
-export const InputUploadComponent = (props: IProps) => {
+export const UploadInternComponent = (props: IProps) => {
     return (
         <div className="form-group">
             <span className="label-form">

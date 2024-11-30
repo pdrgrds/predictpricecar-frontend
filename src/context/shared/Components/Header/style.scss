@@ -24,10 +24,11 @@
 
         * {
             cursor: pointer;
+            color: white;
         }
     }
 
-    h3 {
+    a, h3 {
         color: white;
         margin: 0 0 0 40px;
     }
@@ -58,13 +59,20 @@
             cursor: pointer;
 
             i {
-                font-size: 20px
+                font-size: 20px;
+                color: white;
+                margin-left: 0;
             }
         }
 
         .button-login-home:hover {
             background-color: white;
             color: var(--primary-color);
+            border-bottom: 1px solid var(--primary-color);
+
+            i {
+                color: var(--primary-color);
+            }
         }
     }
 }

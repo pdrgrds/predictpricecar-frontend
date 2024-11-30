@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-text: #050B20;
+  --primary-color: #405FF2;
 
   * {
     font-family: "DM Sans", sans-serif;
@@ -19,8 +21,6 @@
 
   p, h1, h2, h3, h4, h5, h6 { margin: 0; }
 
-  --color-text: #050B20;
-  --primary-color: #405FF2;
 }
 
 #root {
@@ -88,12 +88,29 @@ button:focus-visible {
 }
 
 .label-form {
-  color: var(--primary-color);
+  color: #656565;
   font-weight: 600;
+  font-size: 12px;
 }
 
 .btn-primary {
   background-color: var(--primary-color);
   color: white;
   min-width: 160px;
+}
+
+.btn-cancel {
+  background-color: #ff0074;
+  color: white;
+  min-width: 160px;
+}
+
+.btn-cancel:hover, .btn-primary:hover {
+  border: none
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -4,9 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 import { IPropsScreen } from "../Domain/IPropsScreen";
 import { EntityFormLogin } from "../Domain/EntityFormLogin";
+import { RepositoryImpl } from './RepositoryImpl';
+import { UseCaseLogin } from '../Application/UseCaseLogin';
+import { AdapterErrorMessage } from '../../../shared/Infraestructure/AdapterErrorMessage';
+import { toast } from 'react-toastify';
+import { AdapterLocalStorage } from '../../../shared/Infraestructure/AdapterLocalStorage';
+import { KEYS_APP } from '../../../shared/keys';
+import { useDispatch } from 'react-redux';
+import { addLoading, removeLoading } from '../../../shared/Infraestructure/SliceGeneric';
 
 export const Controller = (): IPropsScreen => {
   const navigate = useNavigate()
+  const repository = new RepositoryImpl();
+  const dispatch = useDispatch();
 
   const formLogin = useFormik<EntityFormLogin>({
     initialValues: {
@@ -19,12 +29,22 @@ export const Controller = (): IPropsScreen => {
     }),
     onSubmit: async (values) => {
       try {
-        // const user = await authService.login(values.username, values.password);
-        // console.log('Usuario autenticado:', user);
-        // Aquí podrías redirigir al usuario o guardar el token
+        dispatch(addLoading());
+        const user = await new UseCaseLogin(repository).exec({
+          password: values.password,
+          username: values.username
+        });
+        AdapterLocalStorage.set(KEYS_APP.user, JSON.stringify(user));
         navigate('/')
+
       } catch (error) {
-        alert('Error de autenticación');
+        const message = AdapterErrorMessage.exec(error as any)
+        toast.error(message, {
+          position: "bottom-right",
+          autoClose: 5000
+        });
+      } finally {
+        dispatch(removeLoading());
       }
     },
   });

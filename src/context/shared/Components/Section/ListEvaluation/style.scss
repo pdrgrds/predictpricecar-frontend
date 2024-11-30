@@ -1,0 +1,42 @@
+.ListEvaluationSection {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+
+    .container-evaluations-section {
+        max-width: 1200px;
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        padding: 70px 0 40px;
+        gap: 40px;
+        flex-wrap: wrap;
+
+        .container-title-evaluations {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            h2 {
+                font-size: 40px;
+                font-weight: bold;
+                color: var(--color-text);
+            }
+
+            .view-all-evaluations {
+                color: var(--color-text);
+                margin-left: auto;
+                cursor: pointer;
+            }
+        }
+
+
+        .list-evaluation {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 23px;
+        }
+    }
+}

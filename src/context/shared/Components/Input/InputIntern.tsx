@@ -21,7 +21,7 @@ export const InputInternComponent = (props: IProps) => {
                     id={`${props.name}`}
                     name={props.name}
                     placeholder={props.label}
-                    className="form-control"
+                    className="form-control form-control-intern"
                     value={props.form.values[props.name]}
                     onChange={props.form.handleChange}
                     onBlur={props.form.handleBlur}

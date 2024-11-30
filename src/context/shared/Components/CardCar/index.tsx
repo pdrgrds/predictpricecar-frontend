@@ -2,17 +2,9 @@ import './style.scss'
 import IconKilometer from './../../../../assets/icons/icon-kilometer.svg'
 import IconCombustible from './../../../../assets/icons/icon-combustible.svg'
 import IconTypeCar from './../../../../assets/icons/icon-typecar.svg'
+import { EntityCardCarComponent } from '../../Domain/EntityCardCarComponent'
 
-interface IProps {
-    titulo: string;
-    descripcion: string;
-    kilometro: number;
-    combustible: string;
-    tipo: string;
-    precio: number
-    link: string;
-    uri: string;
-}
+interface IProps extends EntityCardCarComponent {}
 
 export const CardCarComponent = (props: IProps) => {
 

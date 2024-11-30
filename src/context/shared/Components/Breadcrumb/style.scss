@@ -1,0 +1,46 @@
+.BreadcrumbComponent {
+    padding: 10px 20px;
+    background-color: #DEE4FF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.breadcrumb-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 500;
+
+    &:not(:last-child)::after {
+        content: '>';
+        margin: 0 10px;
+        color: var(--primary-color);
+    }
+
+    &.active {
+        color: #00447b;
+        font-weight: bold;
+        pointer-events: none;
+    }
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #002d5e;
+    }
+}

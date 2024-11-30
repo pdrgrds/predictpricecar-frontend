@@ -9,6 +9,8 @@ export const FormGeneral = (props: IPropsScreen) => {
             <h2>DATOS GENERALES</h2>
 
             <div className="group-inputs-form">
+                <span className="sub-category">1) Características Generales:</span>
+
                 <InputInternComponent
                     form={props.formGeneral}
                     label="Año de fabricación"
@@ -19,7 +21,6 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <SelectInternComponent
                     onChange={() => {}}
                     options={[]}
-                    placeholder="Marca"
                     label="Marca"
                     isRequired
                 />
@@ -41,15 +42,7 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <SelectInternComponent
                     onChange={() => {}}
                     options={[]}
-                    placeholder="Tipo de Combustible"
                     label="Tipo de Combustible"
-                    isRequired
-                />
-
-                <InputInternComponent
-                    form={props.formGeneral}
-                    label="Color"
-                    name=""
                     isRequired
                 />
 
@@ -63,7 +56,6 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <SelectInternComponent
                     onChange={() => {}}
                     options={[]}
-                    placeholder="Tipo de transmisión"
                     label="Tipo de transmisión"
                     isRequired
                 />
@@ -85,14 +77,13 @@ export const FormGeneral = (props: IPropsScreen) => {
                 <SelectInternComponent
                     onChange={() => {}}
                     options={[]}
-                    placeholder="Tipo de tracción"
                     label="Tipo de tracción"
                     isRequired
                 />
             </div>
 
             <div className="group-input-form">
-                <button className="btn-primary">Siguiente</button>
+                <button className="btn-primary"onClick={() => props.onChangeView("historial")}>Siguiente</button>
             </div>
         </div>
     )

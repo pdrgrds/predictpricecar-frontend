@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './style.scss'
 
 interface IProps {
@@ -32,7 +33,7 @@ export const HeaderComponentInternal = (props: IProps) => {
                     <i className="fa-solid fa-bars" />
                     <span>Menú</span>
                 </div>
-                <h3>CARS PREDICT ML</h3>
+                <Link to={"/"}>CARS PREDICT ML</Link>
                 <div className='options-home'>
                     <span>Inicio</span>
                     <span>Lista</span>

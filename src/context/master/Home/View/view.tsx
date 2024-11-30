@@ -21,6 +21,8 @@ import './style.scss';
 import { CardBlogComponents } from '../../../shared/Components/CardBlog';
 import { FooterComponent } from '../../../shared/Components/Footer';
 import { HeaderComponent } from '../../../shared/Components/Header';
+import { Link } from 'react-router-dom';
+import { ListEvaluationSection } from '../../../shared/Components/Section/ListEvaluation';
 
 export const View = (props: IPropsScreen) => {
     return (
@@ -62,22 +64,7 @@ export const View = (props: IPropsScreen) => {
             </section>
 
             { /* 2 SECTION */ }
-            <section className='evaluations-section'>
-                <div className='container-evaluations-section'>
-                    <div className='container-title-evaluations'>
-                        <h2>Evaluaciones recientes</h2>
-                        <span className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
-                    </div>
-                    <div className='list-evaluation'>
-                        {
-                            props.data.listEvaluation.map((row, index) =>
-                                <CardCarComponent {...row} key={index} />
-                            )
-                        }
-                    </div>
-
-                </div>
-            </section>
+            <ListEvaluationSection list={props.data.listEvaluation}/>
 
             { /* 3 SECTION */ }
             <section className='helped-section'>
@@ -85,14 +72,14 @@ export const View = (props: IPropsScreen) => {
                     <div className='group-info-helped'>
                         <h3>¿Estas buscando <br/> un vehículo?</h3>
                         <p>Nos comprometemos a brindarles a nuestros clientes un servicio excepcional.</p>
-                        <button onClick={() => props.redirectPage('form-prediction')}>Empezar <i className='fa-solid fa-up-right-from-square' /></button>
+                        <Link to={""}> Empezar <i className='fa-solid fa-up-right-from-square' /></Link>
                         <img src={IconElectricCar}  height={110} width={110}/>
                     </div>
 
                     <div className='group-info-helped group-info-helped-2'>
                         <h3>¿Quieres vender <br/> tu vehículo?</h3>
                         <p>Nos comprometemos a brindarles a nuestros clientes un servicio excepcional.</p>
-                        <button>Empezar <i className='fa-solid fa-up-right-from-square' /></button>
+                        <Link to="/form-prediction">Empezar <i className='fa-solid fa-up-right-from-square' /></Link>
                         <img src={IconElectricCar2}  height={110} width={110}/>
                     </div>
                 </div>

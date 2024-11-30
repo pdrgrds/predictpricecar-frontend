@@ -16,7 +16,7 @@ type CustomSelectProps = {
 
 export const SelectInternComponent: React.FC<CustomSelectProps> = ({
   options,
-  placeholder = 'Select an option',
+  placeholder = 'Seleccionar',
   onChange,
   ...props
 }) => {
@@ -44,7 +44,7 @@ export const SelectInternComponent: React.FC<CustomSelectProps> = ({
   }, []);
 
   return (
-    <div className="custom-select-container" ref={containerRef}>
+    <div className="custom-select-container custom-select-container-intern" ref={containerRef}>
       <span className="label-form">{ props.label } { props.isRequired && <span className="required"> (*) </span> }</span>
       <button
         className="custom-select-button custom-select-button-intern"
