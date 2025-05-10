@@ -3,15 +3,28 @@ import IconKilometer from './../../../../assets/icons/icon-kilometer.svg'
 import IconCombustible from './../../../../assets/icons/icon-combustible.svg'
 import IconTypeCar from './../../../../assets/icons/icon-typecar.svg'
 import { EntityCardCarComponent } from '../../Domain/EntityCardCarComponent'
+import { Checkbox } from 'antd'
 
-interface IProps extends EntityCardCarComponent {}
+interface IProps extends EntityCardCarComponent {
+    activeCompare?: boolean;
+    isSelectCompare?: boolean;
+    onSelectCompare?: () => void;
+}
 
 export const CardCarComponent = (props: IProps) => {
 
     return (
-        <div className="CardCarComponent">
+        <div
+            className={`CardCarComponent ${props.activeCompare && 'CardCarComponent-activecompare'} ${props.isSelectCompare && 'CardCarComponent-select'}`}
+            onClick={() => props.activeCompare && props.onSelectCompare?.()}
+        >
             <div className='image-background' style={{ backgroundImage: `url(${props.uri})` }}>
-
+                {
+                    props.activeCompare &&
+                    <div style={{ display: 'flex', width: '100%', justifyContent: 'end', padding: 10 }}>
+                        <Checkbox checked={props.isSelectCompare}></Checkbox>
+                    </div>
+                }
             </div>
 
             <div className='detail-card'>
@@ -37,8 +50,11 @@ export const CardCarComponent = (props: IProps) => {
 
                 <div className='detail-card-car'>
                     <span className='price-card-car'>S/ {props.precio}</span>
-                    <span className='link-detail-detail'>Ver detalles <i className='fa-solid fa-up-right-from-square' /></span>
-                </div>
+                    {
+                        !props.activeCompare &&
+                        <span className='link-detail-detail'>Ver detalles <i className='fa-solid fa-up-right-from-square' /></span>
+                    }
+                    </div>
             </div>
 
         </div>

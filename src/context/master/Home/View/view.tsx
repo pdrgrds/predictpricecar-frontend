@@ -1,4 +1,3 @@
-import { CardCarComponent } from '../../../shared/Components/CardCar';
 import { SelectComponent } from '../../../shared/Components/select';
 import { IPropsScreen } from '../Domain/IPropsScreen';
 

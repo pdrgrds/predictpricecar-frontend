@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     font-size: 1rem;
-    width: 100%;
+    width: calc(100% - 40px);
 }
 
 .breadcrumb-list {

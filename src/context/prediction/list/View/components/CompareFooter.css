@@ -1,0 +1,25 @@
+.compare-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  height: 70px;
+  left: 0
+}
+
+.compare-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.compare-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}

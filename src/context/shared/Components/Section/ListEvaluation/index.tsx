@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { EntityCardCarComponent } from "../../../Domain/EntityCardCarComponent";
 import { CardCarComponent } from "../../CardCar";
 import './style.scss';
@@ -8,6 +9,7 @@ interface IProps {
 
 export const ListEvaluationSection = (props: IProps) => {
 
+    const navigate = useNavigate();
     const _list = props.list.length > 0 ? props.list : [
         {
             combustible: "Gasolina",
@@ -96,7 +98,7 @@ export const ListEvaluationSection = (props: IProps) => {
             <div className='container-evaluations-section'>
                 <div className='container-title-evaluations'>
                     <h2>Evaluaciones recientes</h2>
-                    <span className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
+                    <span onClick={() => navigate('/prediction/list')} className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
                 </div>
                 <div className='list-evaluation'>
                     {

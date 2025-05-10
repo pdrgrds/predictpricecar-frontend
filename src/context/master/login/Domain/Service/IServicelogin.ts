@@ -6,5 +6,4 @@ export interface IServiceLoginRequest {
 }
 
 export interface IServiceLoginrResponse extends EntityUsuario {
-
 }
