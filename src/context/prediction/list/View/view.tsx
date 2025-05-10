@@ -130,7 +130,7 @@ export const View: React.FC<IPropsScreen> = (props) => {
             <BreadcrumbComponent
                 items={[
                     { label: 'Inicio', link: "/" },
-                    { label: 'Lista', link: `/prediction/list` },
+                    { label: 'Lista' },
                 ]}
             />
 

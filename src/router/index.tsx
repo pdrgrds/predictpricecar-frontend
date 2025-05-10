@@ -7,6 +7,7 @@ import Home from './../context/master/Home';
 import FormPrediction from './../context/prediction/form';
 import FormDetail from './../context/prediction/detail';
 import FormList from './../context/prediction/list';
+import FormCompare from './../context/prediction/compare';
 import { LayoutBase } from './components/layoutbase';
 import { useEffect } from 'react';
 import { Controller } from './Infraestructure/Controller';
@@ -29,6 +30,7 @@ const AppRouter = () => {
                     <Route path="/form-prediction" element={<FormPrediction />} />
                     <Route path="/form-detail/:id" element={<FormDetail />} />
                     <Route path="/prediction/list" element={<FormList />} />
+                    <Route path="/prediction/compare-vehicle" element={<FormCompare />} />
                 </Route>
 
                 <Route path="/" element={<Home />} />
