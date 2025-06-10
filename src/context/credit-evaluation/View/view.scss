@@ -1,0 +1,122 @@
+.View-Credit-Evaluation {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  .Cover-Image {
+      width: 40%;
+      position: relative;
+
+    .ImageBackground {
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        object-fit: cover;
+    }
+
+    .OverlayText {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #00000040;
+        padding: 10px;
+        border-radius: 10px;
+        width: 80%;
+
+        * {
+            color: #fff;
+            text-align: center;
+        }
+    }
+  }
+
+  .ant-card {
+    width: 60%;
+    border-radius: 0;
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .Title-Main {
+        margin-bottom: 30px;
+    }
+  }
+
+  .ant-typography {
+    text-align: center;
+    color: #00447b;
+
+    &.ant-typography-secondary {
+      margin-bottom: 1rem;
+      color: #ffffffcc;
+    }
+  }
+
+  .ant-form {
+    .ant-form-item {
+      margin-bottom: 1rem;
+
+      .ant-input-number {
+        width: 100%;
+      }
+    }
+
+    .ant-btn {
+      width: 100%;
+      height: 3rem;
+      font-size: 1rem;
+      background-color: #00447b;
+      border: none;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: #005fa3;
+      }
+    }
+  }
+
+  .resultado-cuota {
+    margin-top: 2rem;
+    text-align: center;
+
+    .ant-typography {
+      color: #16a34a;
+    }
+
+    .ant-btn {
+      margin-top: 1rem;
+    }
+  }
+
+  .ant-divider {
+    border-top: 1px dashed #ccc;
+  }
+
+  .ant-checkbox-wrapper {
+    color: #fff;
+  }
+
+  .group-indications {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Container-Amount {
+    border: 1px solid #00447b;
+    margin-top: 20px;
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+
+  // Responsive tweaks
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .ant-card {
+      padding: 1rem;
+    }
+  }
+}

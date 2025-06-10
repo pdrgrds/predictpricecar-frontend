@@ -4,7 +4,6 @@ import { AdapterLocalStorage } from "../../context/shared/Infraestructure/Adapte
 import { KEYS_APP } from "../../context/shared/keys";
 import { IPropsScreen } from "../Domain/IPropsScreen";
 import { changeUser } from "../../context/shared/Infraestructure/SliceGeneric";
-import { useNavigate } from "react-router-dom";
 
 export const Controller = (): IPropsScreen => {
     const dispatch = useDispatch();
