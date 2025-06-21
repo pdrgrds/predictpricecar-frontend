@@ -17,6 +17,7 @@ export const FormHistorial = (props: IPropsScreen) => {
                     label="Kilometraje histórico"
                     name="mileage"
                     isRequired
+                    type="number"
                 />
 
                 <InputInternComponent
@@ -24,6 +25,7 @@ export const FormHistorial = (props: IPropsScreen) => {
                     label="Frecuencia de cambios de aceite (meses)"
                     name="oil_change_frequency"
                     isRequired
+                    type="number"
                 />
 
                 <InputInternComponent
@@ -31,6 +33,7 @@ export const FormHistorial = (props: IPropsScreen) => {
                     label="Frecuencia de cambios de filtro (meses)"
                     name="filter_change_frequency"
                     isRequired
+                    type="number"
                 />
 
                 <CheckboxComponent

@@ -51,16 +51,12 @@ export const Controller = (): IPropsScreen => {
             data.append(key, (formHistorial.values as any)[key]);
         })
 
-        data.append("user", `${user.id}`)
-        data.append("mae", `0.92`)
-        data.append("rmse", `2.4232`)
-        data.append("squared", `4.2323`)
-        data.append("valued_amount", `120000`)
+        data.append("user", `${1}`);
 
         try {
             dispatch(addLoading());
             const result = await new UseCaseSavePrediction(_repository).exec(data);
-            navigate(`/form-detail/${result.id}`);
+            navigate(`/form-detail/${result.detalle.id}`);
         } catch(error) {
             const message = AdapterErrorMessage.exec(error as any)
             toast.error(message, {

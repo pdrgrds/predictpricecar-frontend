@@ -1,12 +1,103 @@
 .HeaderComponentInternal {
+  width: 100%;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+
+  .HeaderComponent {
     width: 100%;
+    max-width: 1440px;
+    padding: 16px 40px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: var(--primary-color);
-    >div { max-width: 1280px; }
+    justify-content: space-between;
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .menu-icon {
+        font-size: 20px;
+        color: var(--accent-color);
+        cursor: pointer;
+      }
+
+      .logo-text {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      a, button {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--accent-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        padding-bottom: 4px;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+      }
+
+      a:hover::after, button:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: var(--underline-color);
+        transition: width 0.3s ease-in-out;
+      }
+
+      a:hover, button:hover {
+        color: var(--hover-color);
+      }
+
+      .auth-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        background-color: transparent;
+        font-weight: 600;
+        transition: 0.3s ease;
+
+        i {
+          font-size: 16px;
+          color: var(--accent-color);
+        }
+
+        &:hover {
+          background-color: white;
+          color: var(--primary-color);
+
+          i {
+            color: var(--primary-color);
+          }
+        }
+      }
+    }
+  }
 }
+
 
 .HeaderComponent {
     width: 100%;

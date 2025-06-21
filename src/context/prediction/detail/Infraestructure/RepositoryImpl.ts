@@ -10,7 +10,7 @@ export class RepositoryImpl implements Repository {
     }
 
     public async getDetail(id: number): Promise<EntityVehiclePrediction> {
-        const result = await this.service.exec<EntityVehiclePrediction>('GET', `/evaluations/evaluations/${id}/`, undefined, 'Bearer');
+        const result = await this.service.exec<EntityVehiclePrediction>('GET', `/predict/historial/${id}/`, undefined, 'Bearer');
         if (!result) throw Error("Ocurrió un error al guardar");
         return result;
     }

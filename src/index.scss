@@ -12,7 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --color-text: #050B20;
-  --primary-color: #405FF2;
+  // --primary-color: #405FF2;
+
+  --primary-color: #0b1d40;
+  --accent-color: #ffffff;
+  --hover-color: #cfe3ff;
+  --underline-color: #ffffff;
 
   * {
     font-family: "DM Sans", sans-serif;

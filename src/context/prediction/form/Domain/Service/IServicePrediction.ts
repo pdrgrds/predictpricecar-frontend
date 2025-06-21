@@ -2,14 +2,15 @@ import { EntityVehiclePrediction } from "../../../../shared/Domain/Catalog/Entit
 
 export interface IServicePredictionRequest {
     "year_of_manufacture": number,
-    "model": string;
-    "version": string;
-    "color": string;
+    "model": number;
+    "version": number;
+    "color": number;
+    "vehicle_type": number;
     "number_of_doors": number,
     "engine_power": number,
     "mileage": number,
-    "oil_change_frequency": string;
-    "filter_change_frequency": string;
+    "oil_change_frequency": number;
+    "filter_change_frequency": number;
     "engine_modifications": boolean,
     "critical_replacements": boolean,
     "documentation_in_order": boolean,
@@ -38,20 +39,21 @@ export interface IServicePredictionRequest {
     "exhaust_system_condition": number,
     "air_conditioning_condition": number,
     "electrical_system_condition": number,
-    "user": number,
-    "copied_user"?: number
+    "user"?: number,
+    "copied_user"?: number;
+    "id"?: number;
 }
 
 export const initIServicePredictionRequest: IServicePredictionRequest = {
     year_of_manufacture: 0,
-    model: "",
-    version: "",
-    color: "",
+    model: 0,
+    version: 0,
+    color: 0,
     number_of_doors: 0,
     engine_power: 0,
     mileage: 0,
-    oil_change_frequency: "",
-    filter_change_frequency: "",
+    oil_change_frequency: 0,
+    filter_change_frequency: 0,
     engine_modifications: false,
     critical_replacements: false,
     documentation_in_order: false,
@@ -80,8 +82,15 @@ export const initIServicePredictionRequest: IServicePredictionRequest = {
     exhaust_system_condition: 0,
     air_conditioning_condition: 0,
     electrical_system_condition: 0,
-    user: 0
+    vehicle_type: 0
 }
 
-export interface IServicePredictResponse extends EntityVehiclePrediction {
+export interface IServicePredictResponse {
+    detalle: IServicePredictionRequest;
+    resultado: {
+        "valued_amount": number;
+        "mae": number;
+        "rmse": number;
+        "squared": number;
+    }
 }

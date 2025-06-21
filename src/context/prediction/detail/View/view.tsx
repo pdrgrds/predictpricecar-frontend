@@ -68,15 +68,15 @@ export const View = (props: IPropsScreen) => {
                     <span className="sub-category">1) Características Generales:</span>
 
                     <DetailComponent label="Año de fabricación" text={props.detail?.year_of_manufacture} />
-                    <DetailComponent label="Marca" text={props.detail?.brand}  />
-                    <DetailComponent label="Modelo" text={props.detail?.model} />
-                    <DetailComponent label="Versión" text={props.detail?.version} />
-                    <DetailComponent label="Tipo de Combustible" text={props.detail?.fuel_type} />
-                    <DetailComponent label="Color" text={props.detail?.color} />
-                    <DetailComponent label="Tipo de transmisión" text={props.detail?.transmission_type} />
+                    <DetailComponent label="Marca" text={props.detail?.brand.name}  />
+                    <DetailComponent label="Modelo" text={props.detail?.model.name} />
+                    <DetailComponent label="Versión" text={props.detail?.version.name} />
+                    <DetailComponent label="Tipo de Combustible" text={props.detail?.fuel_type.name} />
+                    <DetailComponent label="Color" text={props.detail?.color.name} />
+                    <DetailComponent label="Tipo de transmisión" text={props.detail?.transmission_type.name} />
                     <DetailComponent label="Número de puertas" text={props.detail?.number_of_doors} />
                     <DetailComponent label="Potencia del motor (Cilindrica)" text={props.detail?.engine_power} />
-                    <DetailComponent label="Tipo de tracción" text={props.detail?.traction_type} />
+                    <DetailComponent label="Tipo de tracción" text={props.detail?.traction_type.name} />
 
                     <span className="sub-category">2.1) Historial de Mantenimiento:</span>
 
@@ -93,11 +93,11 @@ export const View = (props: IPropsScreen) => {
                     <DetailComponent label="Revisión técnica vigente" text={props.detail?.technical_review_valid ? 'SI' : 'NO'} />
 
                     <span className="sub-category">3.1) Condición Física:</span>
-                    <DetailComponent label="Estado de la carrocería" text={props.detail?.body_condition} />
-                    <DetailComponent label="Estado del chasis" text={props.detail?.chassis_condition} />
-                    <DetailComponent label="Estado de los frenos" text={props.detail?.brakes_condition} />
-                    <DetailComponent label="Estado de la suspensión" text={props.detail?.suspension_condition} />
-                    <DetailComponent label="Estado del Sistema de Escape" text={props.detail?.exhaust_system_condition} />
+                    <DetailComponent label="Estado de la carrocería" text={props.detail?.body_condition.description} />
+                    <DetailComponent label="Estado del chasis" text={props.detail?.chassis_condition.description} />
+                    <DetailComponent label="Estado de los frenos" text={props.detail?.brakes_condition.description} />
+                    <DetailComponent label="Estado de la suspensión" text={props.detail?.suspension_condition.description} />
+                    <DetailComponent label="Estado del Sistema de Escape" text={props.detail?.exhaust_system_condition.description} />
 
                     <span className="sub-category">3.2) Interior:</span>
                     <Gallery images={images} />
@@ -120,14 +120,14 @@ export const View = (props: IPropsScreen) => {
 
 interface ItemDetail {
     label: string;
-    text: any
+    text?: string | number;
 }
 
 const DetailComponent = (props: ItemDetail) => {
     return (
         <div className="DetailComponent">
             <label>{props.label}:</label>
-            <span>{props.text}</span>
+            <span>{props.text ?? '-'}</span>
         </div>
     )
 }
