@@ -5,6 +5,7 @@ import './style.scss';
 
 interface IProps {
     list: Array<EntityCardCarComponent>;
+    className?: string
 }
 
 export const ListEvaluationSection = (props: IProps) => {
@@ -94,7 +95,7 @@ export const ListEvaluationSection = (props: IProps) => {
     ];
 
     return (
-        <section className='ListEvaluationSection'>
+        <section className={`ListEvaluationSection ${props.className}`}>
             <div className='container-evaluations-section'>
                 <div className='container-title-evaluations'>
                     <h2>Evaluaciones recientes</h2>

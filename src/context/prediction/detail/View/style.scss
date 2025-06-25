@@ -180,3 +180,29 @@
     transform: scale(1.02);
   }
 }
+
+.page-intern-vehicles {
+  background-color: #10294d;
+  .container-evaluations-section {
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.5rem !important;
+      font-weight: bold !important;
+      margin-bottom: 1rem !important;
+      color: white !important;
+    }
+
+    .list-evaluation { gap: 10px; }
+
+    .CardCarComponent {
+      border: none !important;
+      height: 286px;
+      background-color: #dee4ff;
+
+      .title-card-car, .description-card-car {
+        display: none;
+      }
+    }
+  }
+}
