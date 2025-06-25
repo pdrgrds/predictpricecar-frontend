@@ -1,9 +1,6 @@
 import './style.scss';
 
-interface IProps {}
-
-export const FooterComponent = (props: IProps) => {
-
+export const FooterComponent = () => {
     return (
         <div className="FooterComponent">
             <div className='Container-FooterComponent'>

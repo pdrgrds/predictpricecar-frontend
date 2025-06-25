@@ -8,15 +8,13 @@ import { UseCaseLoadData } from "../Application/UseCaseLoadData";
 import { RepositoryImpl } from "./RepositoryImpl";
 import { initIServicePredictionRequest, IServicePredictionRequest } from "../Domain/Service/IServicePrediction";
 import { UseCaseSavePrediction } from "../Application/UseCaseSavePrediction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addLoading, removeLoading } from "../../../shared/Infraestructure/SliceGeneric";
 import { toast } from "react-toastify";
 import { AdapterErrorMessage } from "../../../shared/Infraestructure/AdapterErrorMessage";
-import { RootState } from "../../../shared/Infraestructure/AdapterStore";
 
 export const Controller = (): IPropsScreen => {
     const [configForm, setConfigForm] = useState<IConfigForm>(initIConfigForm);
-    const { user } = useSelector((state: RootState) => state.generic.user);
 
     const _repository = new RepositoryImpl();
     const dispatch = useDispatch();

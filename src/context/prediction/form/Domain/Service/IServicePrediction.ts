@@ -1,5 +1,3 @@
-import { EntityVehiclePrediction } from "../../../../shared/Domain/Catalog/EntityVehiclePrediction";
-
 export interface IServicePredictionRequest {
     "year_of_manufacture": number,
     "model": number;

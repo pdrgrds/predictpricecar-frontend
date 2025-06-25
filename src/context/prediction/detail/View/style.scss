@@ -1,45 +1,182 @@
-.DetailPredictioncomponent {
-    .Group-detail {
-        display: flex;
-        flex-direction: column;
-        background-color: white;
-        box-shadow: 0px 0px 14px -1px rgba(222, 222, 222, 0.98);
-        -webkit-box-shadow: 0px 0px 14px -1px rgba(222, 222, 222, 0.98);
-        -moz-box-shadow: 0px 0px 14px -1px rgba(222, 222, 222, 0.98);
-        padding: 40px;
-    }
+.vehicle-detail {
+  background-color: #081c3a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
 
-    .sub-category {
-        width: 100%;
-        text-align: start;
-        color: #393939;
-        font-size: 14px;
+  &__header {
+    background-color: #081c3a;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #1a2f53;
+
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .vehicle-detail__logo {
         font-weight: bold;
-        margin-bottom: 6px;
-        margin-top: 20px;
-    }
+        font-size: 1.2rem;
+      }
 
-    .DetailComponent {
-        font-size: 12px;
-        color: var(--primary-color);
+      .vehicle-detail__menu {
         display: flex;
-        flex-direction: row;
-        gap: 4px;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.9rem;
 
-        label {
-            font-weight: bold;
-        }
+        .login-button {
+          background-color: transparent;
+          border: 1px solid #fff;
+          padding: 0.4rem 0.8rem;
+          border-radius: 6px;
+          color: #fff;
+          cursor: pointer;
 
-        span {
-            color: black;
+          &:hover {
+            background-color: #fff;
+            color: #081c3a;
+          }
         }
+      }
     }
 
-    .group-input-form {
+    .vehicle-detail__title {
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      background-color: #143d82;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .vehicle-detail__image {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 500px;
         width: 100%;
-        margin-top: 20px;
-        gap: 12px;
+      }
+    }
+  }
+
+  &__content {
+    padding: 2rem;
+
+    .vehicle-detail__card {
+      background-color: #10294d;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.8rem;
+        font-size: 0.95rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+
+        img {
+          width: 100%;
+          border-radius: 8px;
+        }
+      }
+
+      .actions {
         display: flex;
         justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        .primary {
+          background-color: #1e53ff;
+          color: white;
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #1742cc;
+          }
+        }
+      }
     }
+
+    .vehicle-swiper {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+
+      img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+        max-height: 350px;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: white;
+      }
+
+      .swiper-pagination-bullet {
+        background: white;
+        opacity: 0.6;
+
+        &-active {
+          background: #1e53ff;
+        }
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ffffff;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 0.6rem;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+
+      &:hover {
+        background-color: white;
+        color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 24px;
+    }
+  }
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-slide-img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }

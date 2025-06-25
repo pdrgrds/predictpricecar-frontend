@@ -6,6 +6,14 @@ import App from './router'
 import { LoaderComponent } from './context/shared/Components/Loader';
 import { Provider as ProviderRedux } from 'react-redux';
 import { AdapterStore } from './context/shared/Infraestructure/AdapterStore';
+//@ts-expect-error @ts-ignore
+import 'swiper/css';
+//@ts-expect-error @ts-ignore
+import 'swiper/css/navigation';
+//@ts-expect-error @ts-ignore
+import 'swiper/css/pagination';
+//@ts-expect-error @ts-ignore
+import 'swiper/css/scrollbar';
 
 createRoot(document.getElementById('root')!).render(
   <ProviderRedux store={AdapterStore}>

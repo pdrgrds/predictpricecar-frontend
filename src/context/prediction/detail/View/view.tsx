@@ -1,133 +1,105 @@
-import { BreadcrumbComponent } from "../../../shared/Components/Breadcrumb";
-import { ListEvaluationSection } from "../../../shared/Components/Section/ListEvaluation";
+import { ModalImageVehicle } from '../../compare/View/components/ModalImageVehicle';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { IPropsScreen } from "../Domain/IPropsScreen";
-import { Gallery } from "react-grid-gallery";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
 import './style.scss'
-import { AdapterGenerico } from "../../../shared/Infraestructure/AdapterGenerico";
 
 export const View = (props: IPropsScreen) => {
-    const images = [
-        {
-           src: props.detail?.front_image || '',
-           width: 350,
-           height: 200,
-           tags: [{ value: 'Frontal', title: 'Frontal' }]
-        },
-        {
-            src: props.detail?.left_side_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Lateral Izquierdo', title: 'Lateral Izquierdo' }]
-        },
-        {
-            src: props.detail?.right_side_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Lateral Derecho', title: 'Lateral Derecho' }]
-        },
-        {
-            src: props.detail?.engine_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Motor', title: 'Motor (Comportamiento)' }]
-        },
-        {
-            src: props.detail?.rear_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Interior', title: 'Interior' }]
-        },
-        {
-            src: props.detail?.seats_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Asientos', title: 'Asientos' }]
-        },
-        {
-            src: props.detail?.dashboard_image || '',
-            width: 350,
-            height: 200,
-            tags: [{ value: 'Tablero', title: 'Tablero' }]
-        }
-    ];
+  const formattedNumber = (amount: number = 0) => Intl.NumberFormat('en-US').format(amount);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const lstImage = [
+    { image: props.detail?.rear_image, nombre: 'Trasera' },
+    { image: props.detail?.front_image, nombre: 'Delantera' },
+    { image: props.detail?.seats_image, nombre: 'Asientos' },
+    { image: props.detail?.engine_image, nombre: 'Motor' },
+    { image: props.detail?.dashboard_image, nombre: 'Panel Control' },
+    { image: props.detail?.interior_image, nombre: 'Interior' },
+    { image: props.detail?.left_side_image, nombre: 'Lado Izquierdo' },
+    { image: props.detail?.right_side_image, nombre: 'Lado Derecho' },
+  ]
 
-    return (
-        <div className="DetailPredictioncomponent">
-            
-            <BreadcrumbComponent
-                items={[
-                    { label: 'Inicio', link: "/" },
-                    { label: 'Valorar vehículo', link: "/form-prediction" },
-                    { label: 'Detalle', link: `${props.detail?.id || ''}` },
-                ]}
-            />
+  return (
+    <div className="vehicle-detail">
+      <main className="vehicle-detail__content">
+        <section className="vehicle-detail__card general">
+          <h2>Características generales</h2>
+          <div className="info-grid">
+            <div><strong>Marca:</strong> {props.detail?.brand.name}</div>
+            <div><strong>Modelo:</strong> {props.detail?.model.name}</div>
+            <div><strong>Versión:</strong> {props.detail?.version.name}</div>
+            <div><strong>Año Fabricación:</strong> {props.detail?.year_of_manufacture}</div>
+            <div><strong>Tipo Vehículo:</strong> {props.detail?.vehicle_type.name}</div>
+            <div><strong>Tipo Combustible:</strong> {props.detail?.fuel_type.name}</div>
+            <div><strong>Color:</strong> {props.detail?.color.name}</div>
+            <div><strong>Tipo Transmisión:</strong> {props.detail?.transmission_type.name}</div>
+            <div><strong>Número Puertas:</strong> {props.detail?.number_of_doors}</div>
+            <div><strong>Potencia Motor (Cilíndrica):</strong> {props.detail?.engine_power}</div>
+            <div><strong>Tipo Tracción:</strong> {props.detail?.traction_type.name}</div>
+          </div>
+        </section>
 
-            <div>
-                <h3>Detalle de la evaluación</h3>
-                <div className="Group-detail">
-                    <span className="sub-category">1) Características Generales:</span>
+        <section className="vehicle-detail__card general">
+          <h2>Datos Históricos</h2>
+          <div className="info-grid">
+            <div><strong>Kilometraje:</strong> {formattedNumber(props.detail?.mileage)} km</div>
+            <div><strong>Frecuencia Cambio Aceite:</strong> {props.detail?.oil_change_frequency} {props.detail?.oil_change_frequency === 1 ? 'mes' : 'meses'}</div>
+            <div><strong>Frecuencia Cambio Filtro:</strong> {props.detail?.filter_change_frequency} {props.detail?.filter_change_frequency === 1 ? 'mes' : 'meses'}</div>
+            <div><strong>Modificaciones Motor:</strong> {props.detail?.engine_modifications ? 'Sí' : '-'}</div>
+            <div><strong>Reemplazo Componentes Críticos:</strong> {props.detail?.critical_replacements ? 'Sí' : '-'}</div>
+            <div><strong>Documentos Regla:</strong> {props.detail?.documentation_in_order ? 'Sí' : '-'}</div>
+            <div><strong>Impuesto Día:</strong> {props.detail?.taxes_in_order ? 'Sí' : '-'}</div>
+            <div><strong>Revisión Técnica Vigente:</strong> {props.detail?.technical_review_valid ? 'Sí' : '-'}</div>
+          </div>
+        </section>
 
-                    <DetailComponent label="Año de fabricación" text={props.detail?.year_of_manufacture} />
-                    <DetailComponent label="Marca" text={props.detail?.brand.name}  />
-                    <DetailComponent label="Modelo" text={props.detail?.model.name} />
-                    <DetailComponent label="Versión" text={props.detail?.version.name} />
-                    <DetailComponent label="Tipo de Combustible" text={props.detail?.fuel_type.name} />
-                    <DetailComponent label="Color" text={props.detail?.color.name} />
-                    <DetailComponent label="Tipo de transmisión" text={props.detail?.transmission_type.name} />
-                    <DetailComponent label="Número de puertas" text={props.detail?.number_of_doors} />
-                    <DetailComponent label="Potencia del motor (Cilindrica)" text={props.detail?.engine_power} />
-                    <DetailComponent label="Tipo de tracción" text={props.detail?.traction_type.name} />
+        <section className="vehicle-detail__card general">
+          <h2>Estado</h2>
+          <div className="info-grid">
+            <div><strong>Estado Carrocería:</strong> {props.detail?.body_condition.name}</div>
+            <div><strong>Estado Chasis:</strong> {props.detail?.chassis_condition.name}</div>
+            <div><strong>Estado Frenos:</strong> {props.detail?.brakes_condition.name}</div>
+            <div><strong>Estado Suspensión:</strong> {props.detail?.suspension_condition.name}</div>
+            <div><strong>Estado Sistema Escape:</strong> {props.detail?.exhaust_system_condition.name}</div>
+            <div><strong>Estado Sistema Aire Acondicionado:</strong> {props.detail?.air_conditioning_condition.name}</div>
+            <div><strong>Estado Sistema Eléctrico:</strong> {props.detail?.electrical_system_condition.name}</div>
+          </div>
+        </section>
 
-                    <span className="sub-category">2.1) Historial de Mantenimiento:</span>
+        <section className="vehicle-detail__card general">
+          <h2>Galería del vehículo</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            navigation
+            pagination={{ clickable: true }}
+            spaceBetween={20}
+            slidesPerView={4}
+            className="vehicle-swiper"
+          >
+            {lstImage.map((item, i) => (
+              <SwiperSlide key={i}>
+                <img
+                  src={item.image}
+                  alt={`Foto ${i + 1}`}
+                  className="swiper-slide-img"
+                  onClick={() => setShowModal(true)}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
 
-                    <DetailComponent label="Kilometraje histórico" text={props.detail?.mileage} />
-                    <DetailComponent label="Frecuencia de cambios de aceite" text={props.detail?.oil_change_frequency} />
-                    <DetailComponent label="Frecuencia de cambios de filtro" text={props.detail?.filter_change_frequency} />
-                    <DetailComponent label="Modificaciones del motor" text={props.detail?.engine_modifications ? 'SI' : 'NO'} />
-                    <DetailComponent label="Reemplazo de componentes críticos" text={props.detail?.critical_replacements ? 'SI' : 'NO'} />
+        <ModalImageVehicle title={`${props.detail?.brand.name} ${props.detail?.model.name}`} images={lstImage.map(row => row.image!)} visible={showModal} onClose={() => setShowModal(false)} />
 
-                    <span className="sub-category">2.2) Documentación:</span>
-
-                    <DetailComponent label="Documentos en regla (Tarjeta de propiedad, SOAT)" text={props.detail?.documentation_in_order ? 'SI' : 'NO'} />
-                    <DetailComponent label="Impuestos al día" text={props.detail?.taxes_in_order ? 'SI' : 'NO'} />
-                    <DetailComponent label="Revisión técnica vigente" text={props.detail?.technical_review_valid ? 'SI' : 'NO'} />
-
-                    <span className="sub-category">3.1) Condición Física:</span>
-                    <DetailComponent label="Estado de la carrocería" text={props.detail?.body_condition.description} />
-                    <DetailComponent label="Estado del chasis" text={props.detail?.chassis_condition.description} />
-                    <DetailComponent label="Estado de los frenos" text={props.detail?.brakes_condition.description} />
-                    <DetailComponent label="Estado de la suspensión" text={props.detail?.suspension_condition.description} />
-                    <DetailComponent label="Estado del Sistema de Escape" text={props.detail?.exhaust_system_condition.description} />
-
-                    <span className="sub-category">3.2) Interior:</span>
-                    <Gallery images={images} />
-
-                    <span className="sub-category">4.1) Resultado:</span>
-                    <DetailComponent label="Valor estimado" text={AdapterGenerico.formatCurrentMoney(parseInt(`${props.detail?.valued_amount || 0}`))} />
-
-                    <div className="group-input-form">
-                        <button className="btn-primary" onClick={() => props.redirectPage("/form-prediction")}>Nuevo Registro</button>
-                        <button className="btn-primary">Publicar</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <ListEvaluationSection list={[]} />
-        </div>
-    )
-}
-
-interface ItemDetail {
-    label: string;
-    text?: string | number;
-}
-
-const DetailComponent = (props: ItemDetail) => {
-    return (
-        <div className="DetailComponent">
-            <label>{props.label}:</label>
-            <span>{props.text ?? '-'}</span>
-        </div>
-    )
-}
+        <section className="vehicle-detail__card result">
+          <h2>Resultados</h2>
+          <p>Valor estimado: ${formattedNumber(props.detail?.valued_amount)}</p>
+          <div className="actions">
+            <button className="primary">Nueva predicción</button>
+            <button className="primary">Publicar</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};

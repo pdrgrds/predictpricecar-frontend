@@ -26,7 +26,7 @@ export const Controller = (): IPropsScreen => {
     onSubmit: async (values) => {
       try {
         dispatch(addLoading());
-        const result = await new UseCaseForgotPassword(_repository).exec(values.correo);
+        await new UseCaseForgotPassword(_repository).exec(values.correo);
         toast.success('Si el correo existe, verifique su bandeja con el cambio de su contraseña');
       } catch (error) {
         const message = AdapterErrorMessage.exec(error as any)
