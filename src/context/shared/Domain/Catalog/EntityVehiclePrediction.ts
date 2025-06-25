@@ -1,12 +1,13 @@
-export interface EntityVehiclePrediction {
+export type EntityVehiclePrediction = {
   id: number
-  brand: {
+  year_of_manufacture: number
+  brand_info: {
     id: number
     name: string
     description: string
     company: string
   }
-  model: {
+  model_info: {
     id: number
     marca: {
       id: number
@@ -17,7 +18,7 @@ export interface EntityVehiclePrediction {
     name: string
     description: string
   }
-  version: {
+  version_info: {
     id: number
     modelo: {
       id: number
@@ -33,67 +34,31 @@ export interface EntityVehiclePrediction {
     name: string
     description: string
   }
-  fuel_type: {
+  fuel_type_info: {
     id: number
     name: string
     description: string
   }
-  transmission_type: {
+  transmission_type_info: {
     id: number
     name: string
     description: string
   }
-  traction_type: {
+  traction_type_info: {
     id: number
     name: string
     description: string
   }
-  color: {
+  color_info: {
     id: number
     name: string
     description: string
   }
-  vehicle_type: {
+  vehicle_type_info: {
     id: number
     name: string
     description: string
   }
-  body_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  chassis_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  brakes_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  suspension_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  exhaust_system_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  air_conditioning_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  electrical_system_condition: {
-    id: number
-    name: string
-    description: string
-  }
-  year_of_manufacture: number
   number_of_doors: number
   engine_power: number
   mileage: number
@@ -104,6 +69,41 @@ export interface EntityVehiclePrediction {
   documentation_in_order: boolean
   taxes_in_order: boolean
   technical_review_valid: boolean
+  body_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  chassis_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  brakes_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  suspension_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  exhaust_system_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  air_conditioning_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
+  electrical_system_condition_info: {
+    id: number
+    name: string
+    description: string
+  }
   front_image: string
   left_side_image: string
   right_side_image: string
@@ -112,11 +112,11 @@ export interface EntityVehiclePrediction {
   interior_image: string
   seats_image: string
   dashboard_image: string
-  valued_amount: number;
-  mae: number;
-  squared: number;
-  rmse: number;
-  created_at: string
+  valued_amount: any
+  mae: any
+  squared: any
+  rmse: any
   user: number
-  copied_user?: string
+  copied_user: any
+  created_at: string
 }

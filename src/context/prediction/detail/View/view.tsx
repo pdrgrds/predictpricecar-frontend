@@ -25,17 +25,17 @@ export const View = (props: IPropsScreen) => {
         <section className="vehicle-detail__card general">
           <h2>Características generales</h2>
           <div className="info-grid">
-            <div><strong>Marca:</strong> {props.detail?.brand.name}</div>
-            <div><strong>Modelo:</strong> {props.detail?.model.name}</div>
-            <div><strong>Versión:</strong> {props.detail?.version.name}</div>
+            <div><strong>Marca:</strong> {props.detail?.brand_info.name}</div>
+            <div><strong>Modelo:</strong> {props.detail?.model_info.name}</div>
+            <div><strong>Versión:</strong> {props.detail?.version_info.name}</div>
             <div><strong>Año Fabricación:</strong> {props.detail?.year_of_manufacture}</div>
-            <div><strong>Tipo Vehículo:</strong> {props.detail?.vehicle_type.name}</div>
-            <div><strong>Tipo Combustible:</strong> {props.detail?.fuel_type.name}</div>
-            <div><strong>Color:</strong> {props.detail?.color.name}</div>
-            <div><strong>Tipo Transmisión:</strong> {props.detail?.transmission_type.name}</div>
+            <div><strong>Tipo Vehículo:</strong> {props.detail?.vehicle_type_info.name}</div>
+            <div><strong>Tipo Combustible:</strong> {props.detail?.fuel_type_info.name}</div>
+            <div><strong>Color:</strong> {props.detail?.color_info.name}</div>
+            <div><strong>Tipo Transmisión:</strong> {props.detail?.transmission_type_info.name}</div>
             <div><strong>Número Puertas:</strong> {props.detail?.number_of_doors}</div>
             <div><strong>Potencia Motor (Cilíndrica):</strong> {props.detail?.engine_power}</div>
-            <div><strong>Tipo Tracción:</strong> {props.detail?.traction_type.name}</div>
+            <div><strong>Tipo Tracción:</strong> {props.detail?.traction_type_info.name}</div>
           </div>
         </section>
 
@@ -56,13 +56,13 @@ export const View = (props: IPropsScreen) => {
         <section className="vehicle-detail__card general">
           <h2>Estado</h2>
           <div className="info-grid">
-            <div><strong>Estado Carrocería:</strong> {props.detail?.body_condition.name}</div>
-            <div><strong>Estado Chasis:</strong> {props.detail?.chassis_condition.name}</div>
-            <div><strong>Estado Frenos:</strong> {props.detail?.brakes_condition.name}</div>
-            <div><strong>Estado Suspensión:</strong> {props.detail?.suspension_condition.name}</div>
-            <div><strong>Estado Sistema Escape:</strong> {props.detail?.exhaust_system_condition.name}</div>
-            <div><strong>Estado Sistema Aire Acondicionado:</strong> {props.detail?.air_conditioning_condition.name}</div>
-            <div><strong>Estado Sistema Eléctrico:</strong> {props.detail?.electrical_system_condition.name}</div>
+            <div><strong>Estado Carrocería:</strong> {props.detail?.body_condition_info.name}</div>
+            <div><strong>Estado Chasis:</strong> {props.detail?.chassis_condition_info.name}</div>
+            <div><strong>Estado Frenos:</strong> {props.detail?.brakes_condition_info.name}</div>
+            <div><strong>Estado Suspensión:</strong> {props.detail?.suspension_condition_info.name}</div>
+            <div><strong>Estado Sistema Escape:</strong> {props.detail?.exhaust_system_condition_info.name}</div>
+            <div><strong>Estado Sistema Aire Acondicionado:</strong> {props.detail?.air_conditioning_condition_info.name}</div>
+            <div><strong>Estado Sistema Eléctrico:</strong> {props.detail?.electrical_system_condition_info.name}</div>
           </div>
         </section>
 
@@ -89,13 +89,13 @@ export const View = (props: IPropsScreen) => {
           </Swiper>
         </section>
 
-        <ModalImageVehicle title={`${props.detail?.brand.name} ${props.detail?.model.name}`} images={lstImage.map(row => row.image!)} visible={showModal} onClose={() => setShowModal(false)} />
+        <ModalImageVehicle title={`${props.detail?.brand_info.name} ${props.detail?.model_info.name}`} images={lstImage.map(row => row.image!)} visible={showModal} onClose={() => setShowModal(false)} />
 
         <section className="vehicle-detail__card result">
           <h2>Resultados</h2>
           <p>Valor estimado: ${formattedNumber(props.detail?.valued_amount)}</p>
           <div className="actions">
-            <button className="primary">Nueva predicción</button>
+            <button className="primary" onClick={() => props.redirectPage('/form-prediction')}>Nueva predicción</button>
             <button className="primary">Publicar</button>
           </div>
         </section>
