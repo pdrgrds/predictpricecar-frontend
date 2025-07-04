@@ -10,7 +10,7 @@ export class RepositoryImpl implements Repository {
     }
 
     public async postRegister(params: IServiceRegisterRequest): Promise<IServiceRegisterResponse> {
-        const result = await this.service.exec<IServiceRegisterResponse>('POST', '/accounts/register/', params);
+        const result = await this.service.exec<IServiceRegisterResponse>('POST', '/auth/register/', params);
         if (!result) throw Error("Ocurrió un error insperado")
         return result;
     }

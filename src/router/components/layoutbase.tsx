@@ -5,11 +5,15 @@ import './layoutbase.scss';
 
 export const LayoutBase = () => {
     const navigate = useNavigate();
+    const stylesByPage: Record<string, object> = {
+        "/form-prediction": { background: 'white' },
+        "/prediction/list": { background: 'white' },
+    }
 
     return (
         <div className="LayoutBase">
             <HeaderComponentInternal redirectPage={(uri) => navigate(uri)}/>
-            <main className="ContentBase">
+            <main className="ContentBase" style={stylesByPage[window.location.pathname] ?? {}}>
                 <div className="containerBase">
                     <Outlet />
                 </div>

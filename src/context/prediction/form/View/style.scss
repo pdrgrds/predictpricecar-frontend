@@ -3,13 +3,16 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: -40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 
     .BreadcrumbComponent {
         margin-bottom: 20px
     }
 
     .ContentStep {
-        width: 200px;
+        width: auto;
     }
 
     .ContentForm {

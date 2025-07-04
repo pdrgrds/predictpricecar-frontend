@@ -127,12 +127,12 @@ export const View: React.FC<IPropsScreen> = (props) => {
 
     return (
         <>
-            <BreadcrumbComponent
+            {/*<BreadcrumbComponent
                 items={[
                     { label: 'Inicio', link: "/" },
                     { label: 'Lista' },
                 ]}
-            />
+            />*/}
 
             <Layout style={{ minHeight: '100vh', padding: 24, marginTop: 36 }}>
                 <Sider width={300} theme="light" style={{ padding: 20, borderRight: '1px solid #f0f0f0' }}>

@@ -41,7 +41,7 @@ export const View = (props: IPropsScreen) => {
                     <InputComponent
                         form={props.formRegister}
                         label='Teléfono'
-                        name='telefono'
+                        name='phone'
                         icon='fa-solid fa-phone'
                     />
 

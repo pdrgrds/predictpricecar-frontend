@@ -10,7 +10,7 @@ export class RepositoryImpl implements Repository {
     }
 
     public async login(params: IServiceLoginRequest): Promise<IServiceLoginrResponse> {
-        const response = await this.service.exec<IServiceLoginrResponse>('POST', '/accounts/login/', params);
+        const response = await this.service.exec<IServiceLoginrResponse>('POST', '/auth/login/', params);
         if (!response) throw Error('Ocurrió un error al verificar su credenciales');
         return response;
     }

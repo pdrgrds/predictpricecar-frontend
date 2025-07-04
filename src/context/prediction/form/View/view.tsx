@@ -1,4 +1,3 @@
-import { BreadcrumbComponent } from "../../../shared/Components/Breadcrumb";
 import { StepperComponent } from "../../../shared/Components/stepper";
 import { IConfigForm } from "../Domain/IConfigForm";
 import { IPropsScreen } from "../Domain/IPropsScreen";
@@ -16,14 +15,6 @@ export const View = (props: IPropsScreen) => {
 
     return (
         <div className="FormPredictioncomponent">
-            
-            <BreadcrumbComponent
-                items={[
-                    { label: 'Inicio', link: "/" },
-                    { label: 'Valorar vehículo', link: undefined },
-                    { label: 'Formulario', link: undefined },
-                ]}
-            />
 
             <div className="ContentStep">
                 <StepperComponent

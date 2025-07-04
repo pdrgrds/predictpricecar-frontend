@@ -1,32 +1,51 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosRequestConfig } from "axios";
 import { AdapterLocalStorage } from "./AdapterLocalStorage";
 import { KEYS_APP } from "../keys";
 
-type method = "POST" | "PATCH" | "DELETE" | "GET" | "PUT";
-type auth = "Bearer" | "NoAuth" | "";
+type Method = "POST" | "PATCH" | "DELETE" | "GET" | "PUT";
+type Auth = "Bearer" | "NoAuth" | "";
 
 export class AdapterService {
-    public async exec<T>(method: method, uri: string, payload: any, auth?: auth, config?: AxiosRequestConfig<JSON>){
-        const shortMethods = {
-            POST: axios.post,
-            PATCH: axios.patch,
-            DELETE: axios.delete,
-            GET: axios.get,
-            PUT: axios.put
-        };
+  private get baseUrl(): string {
+    return import.meta.env.VITE_BASE_URL || "";
+  }
 
-        if (!shortMethods[method]) throw Error("Método no encontrado")
-
-        let configHeader: AxiosRequestConfig = config || {};
-        if (auth === 'Bearer') {
-            const token: string = JSON.parse(AdapterLocalStorage.get(KEYS_APP.user)[0] as any)?.token;
-            configHeader = { ...config, headers: { ...config?.headers, Authorization: `Bearer ${token}` }  }
-        }
-
-        if (method === 'GET') {
-            return (await shortMethods[method](`${import.meta.env.VITE_BASE_URL}${uri}`, configHeader)).data as T
-        }
-
-        return (await shortMethods[method](`${import.meta.env.VITE_BASE_URL}${uri}`, payload, configHeader)).data as T
+  private getAuthHeader(auth?: Auth): Record<string, string> {
+    if (auth === "Bearer") {
+      const token = JSON.parse(AdapterLocalStorage.get(KEYS_APP.user)?.[0] || "null")?.token;
+      return token ? { Authorization: `Bearer ${token}` } : {};
     }
+    return {};
+  }
+
+  public async exec<T>(
+    method: Method,
+    uri: string,
+    payload?: any,
+    auth?: Auth,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    const url = `${this.baseUrl}${uri}`;
+    const headers = { ...config?.headers, ...this.getAuthHeader(auth) };
+    const finalConfig = { ...config, headers };
+
+    try {
+      const response =
+        method === "GET" || method === "DELETE"
+          ? await axios[method.toLowerCase() as "get" | "delete"](url, finalConfig)
+          : await axios[method.toLowerCase() as "post" | "put" | "patch"](url, payload, finalConfig);
+
+      return response.data as T;
+    } catch (error) {
+      const message = axios.isAxiosError(error)
+        ? error.response?.data?.message ||
+          error.response?.data?.error ||
+          error.response?.data?.detail ||
+          JSON.stringify(error.response?.data) ||
+          error.message
+        : "Error inesperado en la petición";
+      throw new Error(message);
+    }
+  }
 }
