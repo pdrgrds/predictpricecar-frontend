@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { AdapterErrorMessage } from '../../../shared/Infraestructure/AdapterErrorMessage';
 import { useDispatch } from 'react-redux';
 import { addLoading, removeLoading } from '../../../shared/Infraestructure/SliceGeneric';
+import { AxiosError } from 'axios';
 
 export const Controller = (): IPropsScreen => {
   const _repository = new RepositoryImpl();
@@ -29,7 +30,7 @@ export const Controller = (): IPropsScreen => {
         await new UseCaseForgotPassword(_repository).exec(values.correo);
         toast.success('Si el correo existe, verifique su bandeja con el cambio de su contraseña');
       } catch (error) {
-        const message = AdapterErrorMessage.exec(error as any)
+        const message = AdapterErrorMessage.exec(error as AxiosError)
         toast.error(message, {
           position: "bottom-right",
           autoClose: 5000

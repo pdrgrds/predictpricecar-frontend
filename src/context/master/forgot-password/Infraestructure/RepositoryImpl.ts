@@ -8,8 +8,8 @@ export class RepositoryImpl implements Repository {
         this.service = new AdapterService();
     }
 
-    public async postForgotPassword(email: string): Promise<any> {
-        const result = await this.service.exec('POST', '/accounts/forgot-password/', { email });
+    public async postForgotPassword(email: string): Promise<{ message: string }> {
+        const result = await this.service.exec<{ message: string }>('POST', '/auth/forgot-password/', { email });
         if (!result) throw Error('Ocurrió un error inesperado');
         return result;
     }
