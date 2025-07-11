@@ -8,6 +8,7 @@ export const LayoutBase = () => {
     const stylesByPage: Record<string, object> = {
         "/form-prediction": { background: 'white' },
         "/prediction/list": { background: 'white' },
+        "/profile": { background: 'white' }
     }
 
     return (

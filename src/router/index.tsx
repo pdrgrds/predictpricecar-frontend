@@ -7,6 +7,7 @@ import ForgotPassword from './../context/master/forgot-password';
 import Register from './../context/master/register';
 import Login from './../context/master/login';
 import Home from './../context/master/Home';
+import Profile from './../context/master/profile';
 
 // Prediction
 import FormCreditEvaluation from './../context/credit-evaluation';
@@ -14,6 +15,7 @@ import FormPrediction from './../context/prediction/form';
 import FormCompare from './../context/prediction/compare';
 import FormDetail from './../context/prediction/detail';
 import FormList from './../context/prediction/list';
+import DetailBlog from './../context/prediction/blog';
 
 // Local
 import { LayoutBase } from './components/layoutbase';
@@ -39,6 +41,9 @@ const AppRouter = () => {
                     <Route path="/form-detail/:id" element={<FormDetail />} />
                     <Route path="/prediction/list" element={<FormList />} />
                     <Route path="/prediction/compare-vehicle" element={<FormCompare />} />
+
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/blog/:id' element={<DetailBlog />} />
                 </Route>
 
                 <Route path="/" element={<Home />} />

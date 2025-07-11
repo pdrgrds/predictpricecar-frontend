@@ -6,6 +6,8 @@ export interface EntityUsuario {
         email: string
         first_name: string
         last_name: string
-        user_type: any
+        is_staff: boolean
+        phone: string;
+        date_joined: string;
     }
 }

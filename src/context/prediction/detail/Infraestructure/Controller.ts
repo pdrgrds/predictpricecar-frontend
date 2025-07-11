@@ -20,7 +20,6 @@ export const Controller = (): IPropsScreen => {
         try {
             dispatch(addLoading());
             const result = await new UseCaseGetDetail(_repository).exec(id);
-            console.log(result);
             setDetail(result);
         } catch(error) {
             const message = AdapterErrorMessage.exec(error as any)

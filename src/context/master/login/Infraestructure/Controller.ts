@@ -51,7 +51,6 @@ export const Controller = (): IPropsScreen => {
   });
 
   const redirectRegister = () => {
-    console.log('register')
     navigate('/register')
   }
 

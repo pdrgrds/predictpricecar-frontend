@@ -3,7 +3,7 @@ import { SelectInternComponent } from "../../../../shared/Components/select/Sele
 import { IPropsScreen } from "../../Domain/IPropsScreen"
 
 export const FormGeneral = (props: IPropsScreen) => {
-    console.log(props.formGeneral.values);
+
     return (
         <div className="FormGeneral">
             <h2>DATOS GENERALES</h2>

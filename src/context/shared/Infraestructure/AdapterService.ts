@@ -11,6 +11,10 @@ export class AdapterService {
     return import.meta.env.VITE_BASE_URL || "";
   }
 
+  private get baseUrlFile(): string {
+    return import.meta.env.VITE_FILE_URL || "";
+  }
+
   private getAuthHeader(auth?: Auth): Record<string, string> {
     if (auth === "Bearer") {
       const token = JSON.parse(AdapterLocalStorage.get(KEYS_APP.user)?.[0] || "null")?.token;
@@ -24,9 +28,10 @@ export class AdapterService {
     uri: string,
     payload?: any,
     auth?: Auth,
-    config?: AxiosRequestConfig
+    config?: AxiosRequestConfig,
+    type?: 'file' | 'normal'
   ): Promise<T> {
-    const url = `${this.baseUrl}${uri}`;
+    const url = `${type === 'file' ? this.baseUrlFile : this.baseUrl}${uri}`;
     const headers = { ...config?.headers, ...this.getAuthHeader(auth) };
     const finalConfig = { ...config, headers };
 

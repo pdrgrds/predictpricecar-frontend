@@ -119,3 +119,46 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.ButtonTableNormal {
+  background-color: var(--primary-color);
+  padding: 2px 10px;
+  width: 40px;
+  height: 18px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.ButtonTableNormal:hover {
+  background-color: #3a4f74;
+  color: white;
+  transition: 0.2s;
+}
+
+.ButtonTableUnderline {
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--primary-color)
+}
+
+.ButtonTableUnderline:hover {
+  color: #3a4f74;
+}
+
+.button-system {
+  background-color: rgb(39, 89, 138);
+  color: white;
+  height: 40px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  cursor: pointer;
+
+  >a {
+    color: white;
+  }
+}

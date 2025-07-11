@@ -6,7 +6,7 @@ export const View = (props: IPropsScreen) => {
     return (
         <div className="login-container">
             <div className="login-form">
-                <h2>CARS PREDICT ML</h2>
+                <h2>RM Autos</h2>
                 <form onSubmit={props.formLogin.handleSubmit}>
                     <InputComponent
                         form={props.formLogin}

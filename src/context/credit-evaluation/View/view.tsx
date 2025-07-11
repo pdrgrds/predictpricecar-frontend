@@ -8,7 +8,6 @@ import "./view.scss";
 const { Title, Text } = Typography;
 
 export const View = (props: IPropsScreen) => {
-    console.log(props);
     const [form] = Form.useForm();
     const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
 

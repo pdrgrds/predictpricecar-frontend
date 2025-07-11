@@ -65,6 +65,10 @@
         transition: width 0.3s ease-in-out;
       }
 
+      button:hover::after {
+        background-color: transparent;
+      }
+
       a:hover, button:hover {
         color: var(--hover-color);
       }

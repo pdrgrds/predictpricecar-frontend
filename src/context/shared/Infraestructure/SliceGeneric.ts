@@ -14,8 +14,10 @@ const initialState: IGenericSlice = {
             first_name: '',
             id: 0,
             last_name: '',
-            user_type: '',
-            username: ''
+            is_staff: false,
+            username: '',
+            phone: '',
+            date_joined: ''
         }
     },
     loading: false
