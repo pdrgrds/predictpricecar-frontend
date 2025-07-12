@@ -10,6 +10,6 @@ export default function() {
     }, [])
 
     return (
-        <View blogs={[]} categories={[]} allTags={[]} {...controller} />
+        <View {...controller} />
     )
 }

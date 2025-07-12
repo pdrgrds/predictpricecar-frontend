@@ -70,7 +70,7 @@ export const View = (props: IPropsScreen) => {
                   <h3 className="title">{blog.title}</h3>
                   <p className="excerpt">{blog.excerpt}</p>
                   <div className="tags">
-                    {blog.tags.map((tag) => (
+                    {blog.tags.map((tag: any) => (
                       <Tag key={tag.id} color="processing">
                         {tag.name}
                       </Tag>

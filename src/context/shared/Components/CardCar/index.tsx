@@ -28,18 +28,11 @@ export const CardCarComponent = () => {
     }, [])
 
     return (
-        list.map((row, index) =>
+        list.map((row) =>
             <div
-                className={`CardCarComponent ${props.activeCompare && 'CardCarComponent-activecompare'} ${props.arrSelect?.some(row => row === index) && 'CardCarComponent-select'}`}
-                onClick={() => props.activeCompare && props.onSelectCompare?.(index)}
+                className={`CardCarComponent`}
             >
                 <div className='image-background' style={{ backgroundImage: `url(${row.front_image})` }}>
-                    {
-                        props.activeCompare &&
-                        <div style={{ display: 'flex', width: '100%', justifyContent: 'end', padding: 10 }}>
-                            <Checkbox checked={props.arrSelect?.some(row => row === index)}></Checkbox>
-                        </div>
-                    }
                 </div>
 
                 <div className='detail-card'>
@@ -65,10 +58,7 @@ export const CardCarComponent = () => {
 
                     <div className='detail-card-car'>
                         <span className='price-card-car'>{AdapterGenerico.formatCurrentMoney(row.valued_amount)}</span>
-                        {
-                            !props.activeCompare &&
-                            <span onClick={() => navigate(`/form-detail/${row.id}`)} className='link-detail-detail'>Ver detalles <i className='fa-solid fa-up-right-from-square' /></span>
-                        }
+                        <span onClick={() => navigate(`/form-detail/${row.id}`)} className='link-detail-detail'>Ver detalles <i className='fa-solid fa-up-right-from-square' /></span>
                     </div>
                 </div>
 
@@ -89,14 +79,14 @@ export const CardCarItemComponent = (props: IProps) => {
 
     return (
         <div
-            className={`CardCarComponent ${props.activeCompare && 'CardCarComponent-activecompare'} ${props.arrSelect?.some(row => row === props.index) && 'CardCarComponent-select'}`}
-            onClick={() => props.activeCompare && props.onSelectCompare?.(props.index)}
+            className={`CardCarComponent ${props.activeCompare && 'CardCarComponent-activecompare'} ${props.arrSelect?.some(row => row === props.id) && 'CardCarComponent-select'}`}
+            onClick={() => props.activeCompare && props.onSelectCompare?.(props.id)}
         >
             <div className='image-background' style={{ backgroundImage: `url(${props.front_image})` }}>
                 {
                     props.activeCompare &&
                     <div style={{ display: 'flex', width: '100%', justifyContent: 'end', padding: 10 }}>
-                        <Checkbox checked={props.arrSelect?.some(row => row === props.index)}></Checkbox>
+                        <Checkbox checked={props.arrSelect?.some(row => row === props.id)}></Checkbox>
                     </div>
                 }
             </div>

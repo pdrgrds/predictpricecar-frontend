@@ -1,23 +1,41 @@
 import { Card, Form, InputNumber, Slider, Button, Typography, Row, Col, Divider, Checkbox } from "antd";
 import { PhoneOutlined, DollarOutlined, CalendarOutlined, SmileOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { IPropsScreen } from "../Domain/IPropsScreen";
 import ImageMain from './../../../assets/image/BackgroundLogin.png';
 import "./view.scss";
+import { AdapterService } from "../../shared/Infraestructure/AdapterService";
+import { useDispatch } from "react-redux";
+import { addLoading, removeLoading } from "../../shared/Infraestructure/SliceGeneric";
 
 const { Title, Text } = Typography;
 
-export const View = (props: IPropsScreen) => {
+export const View = () => {
     const [form] = Form.useForm();
     const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
+    const dispatch = useDispatch();
 
-    const onFinish = (values: any) => {
-        const { amount, months, interestRate } = values;
+    const onFinish = async (values: any) => {
+        const { amount, months, interestRate, contact } = values;
         const monthlyRate = interestRate / 100 / 12;
         const payment =
             (amount * monthlyRate) /
             (1 - Math.pow(1 + monthlyRate, -months));
         setMonthlyPayment(payment);
+
+        try {
+            dispatch(addLoading())
+            const payload = {
+                amount: amount,
+                term: months,
+                contact: !!contact
+            }
+            const service = new AdapterService();
+            await service.exec('POST', '/credit/create/', payload, 'Bearer', {});
+        } catch(err) {
+            console.log(err);
+        } finally {
+            dispatch(removeLoading())
+        }
     }
 
     return (

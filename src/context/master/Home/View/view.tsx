@@ -63,7 +63,7 @@ export const View = (props: IPropsScreen) => {
             </section>
 
             { /* 2 SECTION */ }
-            <ListEvaluationSection list={props.data.listEvaluation}/>
+            <ListEvaluationSection list={[]}/>
 
             { /* 3 SECTION */ }
             <section className='helped-section'>

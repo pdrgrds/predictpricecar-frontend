@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IPropsScreen } from "../Domain/IPropsScreen";
 import { useNavigate } from "react-router-dom";
-import { EntityLoadData } from "../Domain/utils";
+import { EntityLoadData } from "../Domain/Utils";
 import { useDispatch } from "react-redux";
 import { addLoading, removeLoading } from "../../../shared/Infraestructure/SliceGeneric";
 import { RepositoryImpl } from "./RepositoryImpl";

@@ -4,39 +4,84 @@ import { Bar } from '@ant-design/charts';
 import { DollarCircleOutlined } from '@ant-design/icons';
 import { Carousel, Descriptions } from 'antd';
 import { ModalImageVehicle } from './ModalImageVehicle';
+import { EntityVehiclePrediction } from '../../../../shared/Domain/Catalog/EntityVehiclePrediction';
+import { useNavigate } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
-interface Vehicle {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  features: { [key: string]: number };
-}
-
 interface VehicleComparisonProps {
-  vehicle1: Vehicle;
-  vehicle2: Vehicle;
+  vehicle1: EntityVehiclePrediction;
+  vehicle2: EntityVehiclePrediction;
 }
 
 const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle2 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [activeImages, setActiveImages] = useState<string[]>([]);
   const [activeTitle, setActiveTitle] = useState<string>('');
+  const navigate = useNavigate();
 
-  const data = Object.keys(vehicle1.features).flatMap((key) => [
+  const data = [
     {
-      feature: key,
-      value: vehicle1.features[key],
-      vehicle: vehicle1.name,
+      feature: 'Kilometraje',
+      value: vehicle1.mileage,
+      vehicle: `1 - ${vehicle1.model_info.name}`,
+      kevVehicle: 1
     },
     {
-      feature: key,
-      value: vehicle2.features[key],
-      vehicle: vehicle2.name,
+      feature: 'Cilindrica',
+      value: vehicle1.engine_power,
+      vehicle: `1 - ${vehicle1.model_info.name}`,
+      kevVehicle: 1
     },
-  ]);
+    {
+      feature: 'Nro Puertas',
+      value: vehicle1.number_of_doors,
+      vehicle: `1 - ${vehicle1.model_info.name}`,
+      kevVehicle: 1
+    },
+    {
+      feature: 'Año',
+      value: vehicle1.year_of_manufacture,
+      vehicle: `1 - ${vehicle1.model_info.name}`,
+      kevVehicle: 1
+    },
+    {
+      feature: 'Precio',
+      value: vehicle1.valued_amount,
+      vehicle: `1 - ${vehicle1.model_info.name}`,
+      kevVehicle: 1
+    },
+    {
+      feature: 'Kilometraje',
+      value: vehicle2.mileage,
+      vehicle: `2 - ${vehicle2.model_info.name}`,
+      kevVehicle: 2
+    },
+    {
+      feature: 'Cilindrica',
+      value: vehicle2.engine_power,
+      vehicle: `2 - ${vehicle2.model_info.name}`,
+      kevVehicle: 2
+    },
+    {
+      feature: 'Nro Puertas',
+      value: vehicle2.number_of_doors,
+      vehicle: `2 - ${vehicle2.model_info.name}`,
+      kevVehicle: 2
+    },
+    {
+      feature: 'Año',
+      value: vehicle2.year_of_manufacture,
+      vehicle: `2 - ${vehicle2.model_info.name}`,
+      kevVehicle: 2
+    },
+    {
+      feature: 'Precio',
+      value: vehicle2.valued_amount,
+      vehicle: `2 - ${vehicle2.model_info.name}`,
+      kevVehicle: 2
+    },
+  ]
 
   const config = {
     data,
@@ -55,7 +100,7 @@ const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle
     },
   };
 
-  const renderVehicleCard = (vehicle: Vehicle, color: string) => (
+  const renderVehicleCard = (vehicle: EntityVehiclePrediction, color: string, key: 1 | 2) => (
     <Card
       hoverable
       style={{
@@ -64,15 +109,35 @@ const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle
       }}
     >
       <Carousel autoplay>
-        {[vehicle.image, vehicle.image, vehicle.image].map((img, idx) => (
+        {[
+          { image: vehicle.rear_image, name: 'Trasera' },
+          { image: vehicle.front_image, name: 'Delantera' },
+          { image: vehicle.seats_image, name: 'Asientos' },
+          { image: vehicle.engine_image, name: 'Motor' },
+          { image: vehicle.dashboard_image, name: 'Panel Control' },
+          { image: vehicle.interior_image, name: 'Interior' },
+          { image: vehicle.left_side_image, name: 'Lado Izquierdo' },
+          { image: vehicle.right_side_image, name: 'Lado Derecho' },
+        ].map((img, idx) => (
           <div key={idx}>
             <img
-              alt={`${vehicle.name} - ${idx}`}
-              src={img}
+              alt={`${img.name} - ${idx}`}
+              src={img.image}
               style={{ width: '100%', borderRadius: '8px', maxHeight: '250px', objectFit: 'cover' }}
               onClick={() => {
-                setActiveImages([vehicle.image, vehicle.image, vehicle.image]);
-                setActiveTitle(vehicle.name);
+                setActiveImages(
+                  [
+                    vehicle.rear_image,
+                    vehicle.front_image,
+                    vehicle.seats_image,
+                    vehicle.engine_image,
+                    vehicle.dashboard_image,
+                    vehicle.interior_image,
+                    vehicle.left_side_image,
+                    vehicle.right_side_image,
+                  ]
+                );
+                setActiveTitle(vehicle.model_info.name);
                 setIsModalVisible(true);
               }}
             />
@@ -81,11 +146,11 @@ const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle
       </Carousel>
 
       <div style={{ padding: '16px' }}>
-        <Title level={3} style={{ color }}>{vehicle.name}</Title>
+        <Title level={3} style={{ color }}>{vehicle.model_info.name}</Title>
 
         <Statistic
           title="Precio"
-          value={vehicle.price}
+          value={vehicle.valued_amount}
           prefix={<DollarCircleOutlined />}
           precision={0}
           valueStyle={{ color }}
@@ -99,16 +164,16 @@ const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle
           labelStyle={{ fontWeight: 'bold' }}
           contentStyle={{ color: '#555' }}
         >
-          {Object.entries(vehicle.features).map(([key, value]) => (
-            <Descriptions.Item label={key} key={key}>
-              {value}
+          {data.filter(row => row.kevVehicle === key).map((value) => (
+            <Descriptions.Item label={value.feature} key={key}>
+              {value.value}
             </Descriptions.Item>
           ))}
         </Descriptions>
 
         <Divider />
 
-        <Button type="primary" block style={{ backgroundColor: color, borderColor: color }}>
+        <Button onClick={() => navigate(`/form-detail/${vehicle.id}`)} type="primary" block style={{ backgroundColor: color, borderColor: color }}>
           Ver detalles
         </Button>
       </div>
@@ -118,8 +183,8 @@ const VehicleComparison: React.FC<VehicleComparisonProps> = ({ vehicle1, vehicle
   return (
     <div style={{ padding: '20px' }}>
       <Row gutter={[24, 24]}>
-        <Col xs={24} md={12}>{renderVehicleCard(vehicle1, '#405FF2')}</Col>
-        <Col xs={24} md={12}>{renderVehicleCard(vehicle2, '#FF4D4F')}</Col>
+        <Col xs={24} md={12}>{renderVehicleCard(vehicle1, '#405FF2', 1)}</Col>
+        <Col xs={24} md={12}>{renderVehicleCard(vehicle2, '#FF4D4F', 2)}</Col>
       </Row>
 
       <ModalImageVehicle title={activeTitle} images={activeImages} visible={isModalVisible} onClose={() => setIsModalVisible(false)} />

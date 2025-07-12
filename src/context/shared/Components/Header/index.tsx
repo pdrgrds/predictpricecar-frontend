@@ -22,6 +22,7 @@ export const HeaderComponent = (props: IProps) => {
                 <span onClick={() => navigate('/')}>Inicio</span>
                 <span onClick={() => navigate('/prediction/list')}>Lista</span>
                 <span onClick={() => navigate('/blog')}>Blog</span>
+                <span onClick={() => navigate('/credit-evaluation')}>Créditos</span>
                 {/* <span>Página</span>
                 <span>Contáctenos</span> */}
                 {
@@ -54,6 +55,7 @@ export const HeaderComponentInternal = (props: IProps) => {
           <Link to="/">Inicio</Link>
           <Link to="/prediction/list">Lista</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/credit-evaluation">Créditos</Link>
           {/* <Link to="/pagina">Página</Link>
           <Link to="/contacto">Contáctenos</Link> */}
           {

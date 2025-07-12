@@ -1,5 +1,5 @@
 import { EntityRequestEntityBlogList } from "../../../shared/Domain/Catalog/EntityBlogList";
-import { EntityLoadData } from "./utils";
+import { EntityLoadData } from "./Utils";
 
 export interface IPropsScreen {
     init(): void;

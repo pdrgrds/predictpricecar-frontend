@@ -43,6 +43,6 @@ export const Controller = (): IPropsScreen => {
         init,
         detail,
         redirectPage,
-        id
+        id: parseInt(id ?? "0")
     })
 }

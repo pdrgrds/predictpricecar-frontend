@@ -197,7 +197,7 @@ export const View = (props: IPropsScreen) => {
                   <div style={{ display: 'flex', flexDirection: 'row', gap: 14 }}>
                     <button onClick={() => props.openModalPublish(record)} className="button-system"> <EditOutlined /> Editar</button>
                     <div className="button-system">
-                      <Link to={`/blog/${record.id}`} target="_blank"> <EyeOutlined /> Ver </Link>
+                      <Link to={`/blog/${record.idPublish}`} target="_blank"> <EyeOutlined /> Ver </Link>
                     </div>
                   </div>
                   :
