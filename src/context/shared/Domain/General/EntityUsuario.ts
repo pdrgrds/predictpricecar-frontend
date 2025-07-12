@@ -9,5 +9,6 @@ export interface EntityUsuario {
         is_staff: boolean
         phone: string;
         date_joined: string;
+        permitir_notifications: boolean;
     }
 }

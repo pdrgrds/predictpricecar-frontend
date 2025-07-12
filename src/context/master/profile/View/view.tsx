@@ -19,6 +19,7 @@ import { IPropsScreen } from "../Domain/IPropsScreen";
 import { InputInternComponent } from "../../../shared/Components/Input/InputIntern";
 import { AdapterGenerico } from "../../../shared/Infraestructure/AdapterGenerico";
 import { Link } from "react-router-dom";
+import { Form, Checkbox } from "antd";
 
 const { Sider, Content } = Layout;
 
@@ -133,6 +134,10 @@ export const View = (props: IPropsScreen) => {
                 name='phone'
                 icon='fa-solid fa-phone'
               />
+
+              <Checkbox onChange={(e) => props.formContact.setFieldValue('permitir_notifications', e.target.checked)} checked={props.formContact.values.permitir_notifications}>
+                Quiero recibir notificaciones sobre novedades y actualizaciones
+              </Checkbox>
 
               <button type="submit" disabled={props.formContact.isSubmitting} className="login-button">
                 Guardar Cambios

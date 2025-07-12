@@ -6,5 +6,6 @@ export interface IServiceResponseUpdateContact {
         last_name: string;
         email: string;
         phone: string;
+        permitir_notifications: boolean;
     };
 }

@@ -30,13 +30,15 @@ export const Controller = (): IPropsScreen => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const repository = new RepositoryImpl();
+    console.log(user);
 
     const init = async () => {
         formContact.setValues({
             nombres: user.user.first_name,
             apellidos: user.user.last_name,
             correo: user.user.email,
-            phone: user.user.phone
+            phone: user.user.phone,
+            permitir_notifications: user.user.permitir_notifications
         })
 
         formChangePassword.setValues(initFormContactFormChangePassword)
@@ -52,6 +54,7 @@ export const Controller = (): IPropsScreen => {
             apellidos: Yup.string().required('Los Apellidos es obligatorio').min(2, 'Los apellidos deben tener al menos 2 caracteres'),
             correo: Yup.string().email('Ingrese un email válido').required('El Correo es obligatorio'),
             phone: Yup.string().required('El Teléfono es obligatorio'),
+            permitir_notifications: Yup.boolean()
         }),
         onSubmit: async (values) => {
             try {
@@ -73,7 +76,8 @@ export const Controller = (): IPropsScreen => {
                         first_name: response.data.first_name,
                         last_name: response.data.last_name,
                         email: response.data.email,
-                        phone: response.data.phone
+                        phone: response.data.phone,
+                        permitir_notifications: response.data.permitir_notifications
                     }
                 }
 

@@ -7,13 +7,15 @@ export interface IFormContact {
     apellidos: string;
     correo: string;
     phone: string;
+    permitir_notifications: boolean;
 }
 
 export const initFormContact: IFormContact = {
     nombres: "",
     apellidos: "",
     correo: "",
-    phone: ""
+    phone: "",
+    permitir_notifications: false
 }
 
 export interface IFormChangePassword {
