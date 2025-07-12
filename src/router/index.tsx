@@ -15,7 +15,8 @@ import FormPrediction from './../context/prediction/form';
 import FormCompare from './../context/prediction/compare';
 import FormDetail from './../context/prediction/detail';
 import FormList from './../context/prediction/list';
-import DetailBlog from './../context/prediction/blog';
+import DetailBlog from '../context/prediction/blog-detail';
+import ListBlog from '../context/prediction/blog-list';
 
 // Local
 import { LayoutBase } from './components/layoutbase';
@@ -44,6 +45,7 @@ const AppRouter = () => {
 
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/blog/:id' element={<DetailBlog />} />
+                    <Route path='/blog' element={<ListBlog />} />
                 </Route>
 
                 <Route path="/" element={<Home />} />

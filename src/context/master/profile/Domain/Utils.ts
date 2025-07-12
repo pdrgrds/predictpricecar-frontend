@@ -1,6 +1,6 @@
 import { IServiceBlogResponse } from "./Service/IServiceBlog";
-import { IServiceCategoryBlogResponse } from "./Service/IServiceCategoryBlog";
-import { IServiceTagBlogResponse } from "./Service/IServiceTagBlog";
+import { EntityCategoryBlog } from "../../../shared/Domain/Catalog/EntityCategoryBlog";
+import { EntityTagBlog } from "../../../shared/Domain/Catalog/EntityTagBlog";
 
 export interface IFormContact {
     nombres: string;
@@ -32,8 +32,8 @@ export interface IConfigModalPublish {
     show: boolean;
     form: Partial<IServiceBlogResponse>;
     options: {
-        category: IServiceCategoryBlogResponse[];
-        tag: IServiceTagBlogResponse[];
+        category: EntityCategoryBlog[];
+        tag: EntityTagBlog[];
     }
 }
 

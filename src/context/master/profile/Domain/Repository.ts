@@ -1,7 +1,7 @@
 import { IServiceBlogResponse } from "./Service/IServiceBlog";
-import { IServiceCategoryBlogResponse } from "./Service/IServiceCategoryBlog";
+import { EntityCategoryBlog } from "../../../shared/Domain/Catalog/EntityCategoryBlog";
 import { IServicePredictionsByUser } from "./Service/IServicePredictionsByUser";
-import { IServiceTagBlogResponse } from "./Service/IServiceTagBlog";
+import { EntityTagBlog } from "../../../shared/Domain/Catalog/EntityTagBlog";
 import { IServiceResponseUpdateContact } from "./Service/IServiceUpdateContact";
 import { IServiceUpdatePassword } from "./Service/IServiceUpdatePassword";
 import { IFormChangePassword, IFormContact } from "./Utils";
@@ -11,8 +11,8 @@ export interface Repository {
     updatePassword(params: IFormChangePassword): Promise<IServiceUpdatePassword>;
     getPredictionsByUser(): Promise<IServicePredictionsByUser[]>;
     getBlogById(_id: string): Promise<IServiceBlogResponse>;
-    getCategoryBlog(): Promise<IServiceCategoryBlogResponse[]>;
-    getTagBlog(): Promise<IServiceTagBlogResponse[]>;
-    saveBlog(params: FormData): Promise<IServiceTagBlogResponse[]>;
-    editBlog(id: number, params: FormData): Promise<IServiceTagBlogResponse[]>;
+    getCategoryBlog(): Promise<EntityCategoryBlog[]>;
+    getTagBlog(): Promise<EntityTagBlog[]>;
+    saveBlog(params: FormData): Promise<EntityTagBlog[]>;
+    editBlog(id: number, params: FormData): Promise<EntityTagBlog[]>;
 }

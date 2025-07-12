@@ -25,4 +25,20 @@ export class AdapterGenerico {
 
         return payload[format];
     }
+
+    public static buildUrlWithParams(params?: Record<string, any>): string {
+        if (!params) return '';
+
+        const query = Object.entries(params)
+        .flatMap(([key, value]) => {
+            if (!value) return '';
+            if (Array.isArray(value)) {
+                return value.map(v => `${encodeURIComponent(key)}=${encodeURIComponent(v)}`);
+            }
+            return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+        })
+        .join("&");
+
+        return query || '';
+    }
 }

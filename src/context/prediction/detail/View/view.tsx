@@ -96,8 +96,6 @@ export const View = (props: IPropsScreen) => {
           <h2>Resultados</h2>
           <p>Valor estimado: ${formattedNumber(props.detail?.valued_amount)}</p>
           <div className="actions">
-            <button className="primary" onClick={() => props.redirectPage('/form-prediction')}>Nueva predicción</button>
-            <button className="primary">Publicar</button>
           </div>
         </section>
 

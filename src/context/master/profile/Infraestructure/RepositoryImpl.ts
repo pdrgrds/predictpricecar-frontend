@@ -1,9 +1,9 @@
 import { AdapterService } from "../../../shared/Infraestructure/AdapterService";
 import { Repository } from "../Domain/Repository";
 import { IServiceBlogResponse } from "../Domain/Service/IServiceBlog";
-import { IServiceCategoryBlogResponse } from "../Domain/Service/IServiceCategoryBlog";
+import { EntityCategoryBlog } from "../../../shared/Domain/Catalog/EntityCategoryBlog";
 import { IServicePredictionsByUser } from "../Domain/Service/IServicePredictionsByUser";
-import { IServiceTagBlogResponse } from "../Domain/Service/IServiceTagBlog";
+import { EntityTagBlog } from "../../../shared/Domain/Catalog/EntityTagBlog";
 import { IServiceResponseUpdateContact } from "../Domain/Service/IServiceUpdateContact";
 import { IServiceUpdatePassword } from "../Domain/Service/IServiceUpdatePassword";
 import { IFormChangePassword, IFormContact } from "../Domain/Utils";
@@ -15,26 +15,26 @@ export class RepositoryImpl implements Repository {
         this.service = new AdapterService();
     }
 
-    public async editBlog(id: number, params: FormData): Promise<IServiceTagBlogResponse[]> {
-        const response = await this.service.exec<IServiceCategoryBlogResponse[]>('PUT', `/blog/update/${id}/`, params, "Bearer");
+    public async editBlog(id: number, params: FormData): Promise<EntityTagBlog[]> {
+        const response = await this.service.exec<EntityCategoryBlog[]>('PUT', `/blog/update/${id}/`, params, "Bearer");
         if (!response) throw Error('Ocurrió un error al guardar');
         return response;
     }
 
-    public async saveBlog(params: FormData): Promise<IServiceTagBlogResponse[]> {
-        const response = await this.service.exec<IServiceCategoryBlogResponse[]>('POST', '/blog/create/', params, "Bearer");
+    public async saveBlog(params: FormData): Promise<EntityTagBlog[]> {
+        const response = await this.service.exec<EntityCategoryBlog[]>('POST', '/blog/create/', params, "Bearer");
         if (!response) throw Error('Ocurrió un error al guardar');
         return response;
     }
 
-    public async getCategoryBlog(): Promise<IServiceCategoryBlogResponse[]> {
-        const response = await this.service.exec<IServiceCategoryBlogResponse[]>('GET', '/blog/categories/', {}, "NoAuth");
+    public async getCategoryBlog(): Promise<EntityCategoryBlog[]> {
+        const response = await this.service.exec<EntityCategoryBlog[]>('GET', '/blog/categories/', {}, "NoAuth");
         if (!response) throw Error('Ocurrió un error');
         return response;
     }
 
-    public async getTagBlog(): Promise<IServiceTagBlogResponse[]> {
-        const response = await this.service.exec<IServiceTagBlogResponse[]>('GET', '/blog/tags/', {}, "NoAuth");
+    public async getTagBlog(): Promise<EntityTagBlog[]> {
+        const response = await this.service.exec<EntityTagBlog[]>('GET', '/blog/tags/', {}, "NoAuth");
         if (!response) throw Error('Ocurrió un error');
         return response;
     }

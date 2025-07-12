@@ -1,4 +1,4 @@
-export interface IServiceCategoryBlogResponse {
+export interface EntityCategoryBlog {
     id: number;
     name: string;
     description: string;
