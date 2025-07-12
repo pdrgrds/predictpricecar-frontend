@@ -1,3 +1,71 @@
-.profile-container {
-    
+.blog-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+
+  .blog-detail-card {
+    .ant-card-cover img {
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .meta-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+
+      .author-name {
+        font-weight: 500;
+        color: #555;
+      }
+
+      .date {
+        color: #888;
+        font-size: 0.9em;
+      }
+
+      .category-tag {
+        margin-left: auto;
+      }
+    }
+
+    .content {
+      font-size: 1.05em;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tags {
+      margin-top: 16px;
+    }
+
+    .prediction-summary {
+      background: #f7f9fc;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95em;
+      h4 {
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #00447b;
+      }
+      p {
+        margin: 4px 0;
+      }
+    }
+
+    .no-image {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+      color: #999;
+      font-size: 1.2em;
+    }
+  }
 }

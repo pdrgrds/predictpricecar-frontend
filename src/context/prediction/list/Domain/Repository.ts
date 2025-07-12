@@ -1,3 +1,7 @@
+import { EntityCardCarComponent } from "../../../shared/Domain/EntityCardCarComponent";
+import { IServiceFilterRequest, IServiceFilterResponse } from "./Service/IServiceFilter";
+
 export interface Repository {
-    loadData(): Promise<void>;
+    getFilters(): Promise<IServiceFilterResponse>;
+    search(params: IServiceFilterRequest): Promise<EntityCardCarComponent[]>
 }

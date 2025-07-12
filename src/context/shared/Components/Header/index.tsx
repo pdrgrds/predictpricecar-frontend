@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './style.scss'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../Infraestructure/AdapterStore';
@@ -9,6 +9,7 @@ interface IProps {
 
 export const HeaderComponent = (props: IProps) => {
     const { user } = useSelector((state: RootState) => state.generic.user)
+    const navigate = useNavigate();
 
     return (
         <div className='HeaderComponent'>
@@ -18,11 +19,11 @@ export const HeaderComponent = (props: IProps) => {
             </div>
             <h3>RM Autos</h3>
             <div className='options-home'>
-                <span>Inicio</span>
-                <span>Lista</span>
-                <span>Blog</span>
-                <span>Página</span>
-                <span>Contáctenos</span>
+                <span onClick={() => navigate('/')}>Inicio</span>
+                <span onClick={() => navigate('/prediction/list')}>Lista</span>
+                <span onClick={() => navigate('/blog')}>Blog</span>
+                {/* <span>Página</span>
+                <span>Contáctenos</span> */}
                 {
                     user.is_staff ?
                     <a style={{ margin: 0 }} href={import.meta.env.VITE_ADMIN_URL} target='_blank'>Admin</a>
@@ -51,10 +52,10 @@ export const HeaderComponentInternal = (props: IProps) => {
         </div>
         <nav className="nav-links">
           <Link to="/">Inicio</Link>
-          <Link to="/lista">Lista</Link>
+          <Link to="/prediction/list">Lista</Link>
           <Link to="/blog">Blog</Link>
-          <Link to="/pagina">Página</Link>
-          <Link to="/contacto">Contáctenos</Link>
+          {/* <Link to="/pagina">Página</Link>
+          <Link to="/contacto">Contáctenos</Link> */}
           {
             user.is_staff && (
               <a href={import.meta.env.VITE_ADMIN_URL} target="_blank" rel="noopener noreferrer">Admin</a>

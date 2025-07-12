@@ -30,15 +30,22 @@ export class AdapterGenerico {
         if (!params) return '';
 
         const query = Object.entries(params)
-        .flatMap(([key, value]) => {
-            if (!value) return '';
-            if (Array.isArray(value)) {
-                return value.map(v => `${encodeURIComponent(key)}=${encodeURIComponent(v)}`);
-            }
-            return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-        })
-        .join("&");
+            .flatMap(([key, value]) => {
+                if (!value) return '';
+                if (Array.isArray(value)) {
+                    return value.map(v => `${encodeURIComponent(key)}=${encodeURIComponent(v)}`);
+                }
+                return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+            })
+            .join("&");
 
         return query || '';
     }
+
+    public static scrollToTop = (): void => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
 }

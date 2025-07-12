@@ -8,7 +8,7 @@ export default function() {
 
     useEffect(() => {
         controller.init();
-    }, [])
+    }, [controller.id])
 
     return (
         <>

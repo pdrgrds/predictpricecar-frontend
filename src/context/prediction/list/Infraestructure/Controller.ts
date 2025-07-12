@@ -3,16 +3,44 @@ import { IPropsScreen } from "../Domain/IPropsScreen"
 import { EntityConfigCompare, initEntityConfigCompare } from "../Domain/utils";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
+import { AdapterGenerico } from "../../../shared/Infraestructure/AdapterGenerico";
+import { initIServiceFilterResponse, IServiceFilterRequest, IServiceFilterResponse } from "../Domain/Service/IServiceFilter";
+import { RepositoryImpl } from "./RepositoryImpl";
+import { useDispatch } from "react-redux";
+import { addLoading, removeLoading } from "../../../shared/Infraestructure/SliceGeneric";
+import { EntityCardCarComponent } from "../../../shared/Domain/EntityCardCarComponent";
 
 export const Controller = (): IPropsScreen => {
     const [configCompare, setConfigCompare] = useState<EntityConfigCompare>(initEntityConfigCompare);
+    const [optionsFilters, setOptionsFilters] = useState<IServiceFilterResponse>(initIServiceFilterResponse);
+    const [list, setList] = useState<EntityCardCarComponent[]>([]);
     const [api, contextHolder] = notification.useNotification();
+    const repository = new RepositoryImpl();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const init = () => {
+    const init = async () => {
+        AdapterGenerico.scrollToTop();
+        try {
+            dispatch(addLoading());
+            const response = await repository.getFilters();
+            await onSubmitFilter({});
+            setOptionsFilters(response);
+        } catch(error) {
+            console.log(error)
+        } finally {
+            dispatch(removeLoading());
+        }
     }
 
     const destroy = () => {
+    }
+
+    const onSubmitFilter = async (params: IServiceFilterRequest) => {
+        dispatch(addLoading());
+        const result = await repository.search(params).catch(() => []);
+        setList(result);
+        dispatch(removeLoading());
     }
 
     // Config compare
@@ -55,6 +83,9 @@ export const Controller = (): IPropsScreen => {
         configCompare,
         onChangeConfigCompare,
         onChangeItemCompare,
-        onSubmitCompare
+        onSubmitCompare,
+        optionsFilters,
+        onSubmitFilter,
+        list
     })
 }

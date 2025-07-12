@@ -71,7 +71,7 @@ export const View = (props: IPropsScreen) => {
                     <div className='group-info-helped'>
                         <h3>¿Estas buscando <br/> un vehículo?</h3>
                         <p>Nos comprometemos a brindarles a nuestros clientes un servicio excepcional.</p>
-                        <Link to={""}> Empezar <i className='fa-solid fa-up-right-from-square' /></Link>
+                        <Link to={"/prediction/list"}> Empezar <i className='fa-solid fa-up-right-from-square' /></Link>
                         <img src={IconElectricCar}  height={110} width={110}/>
                     </div>
 
@@ -126,7 +126,7 @@ export const View = (props: IPropsScreen) => {
 
                     <div className='title-products-premiun'>
                         <h2>Explora nuestras marcas Premiun</h2>
-                        <span className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
+                        <span onClick={() => props.redirectPage('/prediction/list')} className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
                     </div>
 
                     <div className='list-products-premiun'>
@@ -161,15 +161,11 @@ export const View = (props: IPropsScreen) => {
                 <div className='container-blog-section'>
                     <div className='title-blog'>
                         <h2>Explora nuestro blog</h2>
-                        <span className='view-all'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
+                        <span className='view-all' onClick={() => props.redirectPage('/blog')}>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
                     </div>
 
                     <div className='list-blog'>
-                        {
-                            props.data.lisToptBlog.map(row =>
-                                <CardBlogComponents {...row} />
-                            )
-                        }
+                        <CardBlogComponents />
                     </div>
 
                 </div>

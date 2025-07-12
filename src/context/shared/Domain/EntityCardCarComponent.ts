@@ -1,10 +1,11 @@
 export interface EntityCardCarComponent {
-    titulo: string;
-    descripcion: string;
-    kilometro: number;
-    combustible: string;
-    tipo: string;
-    precio: number
-    link: string;
-    uri: string;
+  id: number
+  brand: string
+  model: string
+  version: string
+  mileage: number
+  fuel_type: string
+  transmission_type: string
+  valued_amount: number
+  front_image: string
 }

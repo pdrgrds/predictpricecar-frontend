@@ -102,11 +102,7 @@ export const ListEvaluationSection = (props: IProps) => {
                     <span onClick={() => navigate('/prediction/list')} className='view-all-evaluations'>ver todo <i className='fa-solid fa-up-right-from-square' /></span>
                 </div>
                 <div className='list-evaluation'>
-                    {
-                        _list.map((row, index) =>
-                            <CardCarComponent {...row} key={index} />
-                        )
-                    }
+                    <CardCarComponent />
                 </div>
 
             </div>

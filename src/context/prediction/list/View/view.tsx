@@ -15,125 +15,31 @@ import {
     CarOutlined,
     FilterOutlined,
 } from '@ant-design/icons';
-import { CardCarComponent } from '../../../shared/Components/CardCar';
-import { BreadcrumbComponent } from '../../../shared/Components/Breadcrumb';
+import { CardCarItemComponent } from '../../../shared/Components/CardCar';
 import { CardBlogComponents } from '../../../shared/Components/CardBlog';
 import './style.scss';
 import { IPropsScreen } from '../Domain/IPropsScreen';
 import CompareFooter from './components/CompareFooter';
+import { AdapterGenerico } from '../../../shared/Infraestructure/AdapterGenerico';
 
 const { Sider, Content } = Layout;
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const brands = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW', 'Mercedes'];
-const fuelTypes = ['Gasolina', 'Diésel', 'Eléctrico', 'Híbrido'];
-const transmissions = ['Automática', 'Manual'];
-const colors = ['Negro', 'Blanco', 'Rojo', 'Azul', 'Gris'];
-const blogs = [
-    { categoria: 'Accesorio', descripcion: '2024 BWM ALPINA XB7 con exclusivo detalles, extraordinario.', fecha: 'Octubre 22, 2024', uri: 'https://www.topgear.com/sites/default/files/images/cars-road-test/carousel/2021/03/9d0d163aa51ed59f0a737376c8f1ce68/alpinaxb7-13.jpg', user: 'Admin' },
-    { categoria: 'Nuevo', descripcion: '2024 BWM ALPINA XB6 con exclusivo detalles, extraordinario.', fecha: 'Octubre 14, 2024', uri: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/04/bmw-alpina-xb7-2675827.jpg?tf=1200x675', user: 'Admin' },
-    { categoria: 'Piezas', descripcion: '2024 BWM ALPINA XB5 con exclusivo detalles, extraordinario.', fecha: 'Octubre 10, 2024', uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6geY2op9taMcmUb4ObPEiNWuGEvQ7sIBuQ&s', user: 'Admin' }
-]
-const list = [
-    {
-        combustible: "Gasolina",
-        descripcion: "2.0 TFSI quattro S tronic",
-        kilometro: 30,
-        link: "2",
-        precio: 45000,
-        tipo: "Automático",
-        titulo: "Audi A4",
-        uri: "https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_640.jpg"
-    },
-    {
-        combustible: "Diesel",
-        descripcion: "1.6 BlueHDi Feel",
-        kilometro: 40,
-        link: "3",
-        precio: 28000,
-        tipo: "Manual",
-        titulo: "Peugeot 308",
-        uri: "https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg"
-    },
-    {
-        combustible: "Híbrido",
-        descripcion: "3.5 Hybrid LE sedan",
-        kilometro: 15,
-        link: "4",
-        precio: 32000,
-        tipo: "Automático",
-        titulo: "Toyota Prius",
-        uri: "https://www.privatecollectionmotors.com/imagetag/496/main/l/Used-2017-Mercedes-Benz-AMG-GT-S-AMG-GT-S-1689746732.jpg"
-    },
-    {
-        combustible: "Eléctrico",
-        descripcion: "Long Range Plus AWD",
-        kilometro: 50,
-        link: "5",
-        precio: 65000,
-        tipo: "Automático",
-        titulo: "Tesla Model S",
-        uri: "https://www.marinoperformancemotors.com/imagetag/13117/11/l/Used-2017-Mercedes-Benz-AMG-GT-S.jpg"
-    },
-    {
-        combustible: "Gasolina",
-        descripcion: "1.8 i-VTEC EX sedan",
-        kilometro: 25,
-        link: "6",
-        precio: 23000,
-        tipo: "Manual",
-        titulo: "Honda Civic",
-        uri: "https://cdn.pixabay.com/photo/2024/01/17/12/06/car-8514314_640.png"
-    },
-    {
-        combustible: "Diesel",
-        descripcion: "2.2 i-DTEC SE 4WD",
-        kilometro: 10,
-        link: "7",
-        precio: 37000,
-        tipo: "Automático",
-        titulo: "Honda CR-V",
-        uri: "https://thumbs.dreamstime.com/b/vintage-american-car-garage-selective-focus-vintage-american-car-garage-selective-focus-322997417.jpg"
-    },
-    {
-        combustible: "Gasolina",
-        descripcion: "5.0 V8 GT Fastback",
-        kilometro: 15,
-        link: "8",
-        precio: 55000,
-        tipo: "Manual",
-        titulo: "Ford Mustang",
-        uri: "https://live.dealer-asset.co/images/br1168/product/paintSwatch/vehicle/ford-negro.png?s=1024"
-    },
-    {
-        combustible: "Híbrido",
-        descripcion: "2.5 AWD Limited",
-        kilometro: 20,
-        link: "9",
-        precio: 42000,
-        tipo: "Automático",
-        titulo: "Toyota RAV4 Hybrid",
-        uri: "https://grupopanaseminuevos.com.pe/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-09-at-9.25.16-AM-7.jpeg"
-    }
-]
-
 export const View: React.FC<IPropsScreen> = (props) => {
     const [form] = Form.useForm();
 
     const onSubmit = () => {
-        console.log(form.getFieldsValue());
+        props.onSubmitFilter(form.getFieldsValue());
+    }
+
+    const onReset = () => {
+        form.resetFields();
+        props.onSubmitFilter({});
     }
 
     return (
         <>
-            {/*<BreadcrumbComponent
-                items={[
-                    { label: 'Inicio', link: "/" },
-                    { label: 'Lista' },
-                ]}
-            />*/}
-
             <Layout style={{ minHeight: '100vh', padding: 24, marginTop: 36 }}>
                 <Sider width={300} theme="light" style={{ padding: 20, borderRight: '1px solid #f0f0f0' }}>
                     <h3><FilterOutlined /> Filtros</h3>
@@ -142,9 +48,9 @@ export const View: React.FC<IPropsScreen> = (props) => {
                             <Panel header="Marca" key="1">
                                 <Form.Item name="brand">
                                     <Select placeholder="Selecciona una marca" allowClear>
-                                        {brands.map(brand => (
-                                            <Option key={brand} value={brand}>
-                                                {brand}
+                                        {props.optionsFilters.brand.map(brand => (
+                                            <Option key={brand.id} value={brand.id}>
+                                                {brand.name}
                                             </Option>
                                         ))}
                                     </Select>
@@ -153,14 +59,14 @@ export const View: React.FC<IPropsScreen> = (props) => {
 
                             <Panel header="Precio" key="2">
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                    <span>$1,000</span>
-                                    <span>$100,000</span>
+                                    <span>{AdapterGenerico.formatCurrentMoney(props.optionsFilters.amount_price[0] ?? 0)}</span>
+                                    <span>{AdapterGenerico.formatCurrentMoney(props.optionsFilters.amount_price[1] ?? 0)}</span>
                                 </div>
-                                <Form.Item name="price">
+                                <Form.Item name="precio">
                                     <Slider
                                         range
-                                        min={1000}
-                                        max={100000}
+                                        min={props.optionsFilters.amount_price[0]}
+                                        max={props.optionsFilters.amount_price[1]}
                                         step={1000}
                                         tooltip={{ formatter: (value) => `$${value}` }}
                                     />
@@ -170,13 +76,13 @@ export const View: React.FC<IPropsScreen> = (props) => {
                             <Panel header="Kilometraje" key="3">
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                                     <span>0 km</span>
-                                    <span>300,000 km</span>
+                                    <span>{props.optionsFilters.mileage[1]} km</span>
                                 </div>
                                 <Form.Item name="mileage">
                                     <Slider
                                         range
                                         min={0}
-                                        max={300000}
+                                        max={props.optionsFilters.mileage[1]}
                                         step={1000}
                                         tooltip={{ formatter: (value) => `${value} km` }}
                                     />
@@ -185,37 +91,37 @@ export const View: React.FC<IPropsScreen> = (props) => {
 
                             <Panel header="Año" key="4">
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                    <span>1990</span>
-                                    <span>2025</span>
+                                    <span>{props.optionsFilters.year_vehicle[0]}</span>
+                                    <span>{props.optionsFilters.year_vehicle[1]}</span>
                                 </div>
-                                <Form.Item name="yearRange">
+                                <Form.Item name="anio">
                                     <Slider
                                         range
-                                        min={1990}
-                                        max={2025}
+                                        min={props.optionsFilters.year_vehicle[0]}
+                                        max={props.optionsFilters.year_vehicle[1]}
                                         tooltip={{ formatter: (value) => `${value}` }}
                                     />
                                 </Form.Item>
                             </Panel>
 
                             <Panel header="Combustible" key="5">
-                                <Form.Item name="fuelType">
-                                    <Checkbox.Group options={fuelTypes} />
+                                <Form.Item name="combustible">
+                                    <Checkbox.Group options={props.optionsFilters.fuel_type.map(row => ({ label: row.name, value: row.id }))} />
                                 </Form.Item>
                             </Panel>
 
                             <Panel header="Transmisión" key="6">
-                                <Form.Item name="transmission">
-                                    <Checkbox.Group options={transmissions} />
+                                <Form.Item name="transmision">
+                                    <Checkbox.Group options={props.optionsFilters.transmission_type.map(row => ({ label: row.name, value: row.id }))} />
                                 </Form.Item>
                             </Panel>
 
                             <Panel header="Color" key="7">
                                 <Form.Item name="color">
                                     <Select placeholder="Selecciona un color" allowClear>
-                                        {colors.map(color => (
-                                            <Option key={color} value={color}>
-                                                {color}
+                                        {props.optionsFilters.color.map(color => (
+                                            <Option key={color.id} value={color.id}>
+                                                {color.name}
                                             </Option>
                                         ))}
                                     </Select>
@@ -227,7 +133,7 @@ export const View: React.FC<IPropsScreen> = (props) => {
                         <Divider />
                         <Row gutter={8}>
                             <Col span={12}>
-                                <Button onClick={() => form.resetFields()} block disabled={props.configCompare.active}>
+                                <Button onClick={() => onReset()} block disabled={props.configCompare.active}>
                                     Resetear
                                 </Button>
                             </Col>
@@ -257,22 +163,15 @@ export const View: React.FC<IPropsScreen> = (props) => {
 
                 <Content style={{ padding: '0 24px', display: 'flex', flexDirection: 'row', gap: 16, flexWrap: 'wrap' }}>
                     {
-                        list.map((row, index) => (
-                            <CardCarComponent
-                                combustible={row.combustible}
-                                descripcion={row.descripcion}
-                                kilometro={row.kilometro}
-                                link={row.link}
-                                precio={row.precio}
-                                tipo={row.tipo}
-                                titulo={row.titulo}
-                                uri={row.uri}
-                                key={index}
+                        props.list.map((row, index) =>
+                            <CardCarItemComponent
+                                {...row}
+                                index={index}
                                 activeCompare={props.configCompare.active}
-                                isSelectCompare={props.configCompare.arrList.some((row) => row === index)}
-                                onSelectCompare={() => props.onChangeItemCompare(index)}
+                                arrSelect={props.configCompare.arrList}
+                                onSelectCompare={props.onChangeItemCompare}
                             />
-                        ))
+                        )
                     }
                 </Content>
             </Layout>
@@ -285,11 +184,7 @@ export const View: React.FC<IPropsScreen> = (props) => {
                     </div>
 
                     <div className='list-blog'>
-                        {
-                            blogs.map(row =>
-                                <CardBlogComponents {...row} />
-                            )
-                        }
+                        <CardBlogComponents />
                     </div>
 
                 </div>

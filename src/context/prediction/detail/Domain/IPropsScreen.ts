@@ -4,4 +4,5 @@ export interface IPropsScreen {
     init(): void;
     detail: EntityVehiclePrediction | null;
     redirectPage: (url: string) => void
+    id: number
 }

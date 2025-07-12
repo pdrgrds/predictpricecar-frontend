@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { AdapterErrorMessage } from "../../../shared/Infraestructure/AdapterErrorMessage";
 import { useState } from "react";
 import { EntityVehiclePrediction } from "../../../shared/Domain/Catalog/EntityVehiclePrediction";
+import { AdapterGenerico } from "../../../shared/Infraestructure/AdapterGenerico";
 
 export const Controller = (): IPropsScreen => {
     const _repository = new RepositoryImpl();
@@ -20,6 +21,7 @@ export const Controller = (): IPropsScreen => {
         try {
             dispatch(addLoading());
             const result = await new UseCaseGetDetail(_repository).exec(id);
+            AdapterGenerico.scrollToTop();
             setDetail(result);
         } catch(error) {
             const message = AdapterErrorMessage.exec(error as any)
@@ -40,6 +42,7 @@ export const Controller = (): IPropsScreen => {
     return ({
         init,
         detail,
-        redirectPage
+        redirectPage,
+        id
     })
 }
