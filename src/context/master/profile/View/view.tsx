@@ -19,7 +19,7 @@ import { IPropsScreen } from "../Domain/IPropsScreen";
 import { InputInternComponent } from "../../../shared/Components/Input/InputIntern";
 import { AdapterGenerico } from "../../../shared/Infraestructure/AdapterGenerico";
 import { Link } from "react-router-dom";
-import { Form, Checkbox } from "antd";
+import { Checkbox } from "antd";
 
 const { Sider, Content } = Layout;
 

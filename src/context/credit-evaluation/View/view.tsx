@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, Form, InputNumber, Slider, Button, Typography, Row, Col, Divider, Checkbox } from "antd";
 import { PhoneOutlined, DollarOutlined, CalendarOutlined, SmileOutlined } from "@ant-design/icons";
 import { useState } from "react";
